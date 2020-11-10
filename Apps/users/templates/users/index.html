@@ -1,0 +1,124 @@
+{% extends "users/base.html" %}
+{% block content %}
+{% load static %}
+<header class="masthead text-white text-center" style="background:url({%static 'assets/img/bg-masthead.jpg' %}) no-repeat center center; background-size:cover;">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-xl-9 mx-auto">
+                <h1 class="mb-5" style="font-family: Roboto, sans-serif;">Hayalinizdeki <br>üniversiteyi bulun</h1>
+            </div>
+            <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+                <form>
+                    <div class="form-row" data-bs-hover-animate="pulse">
+                        <div class="col-12 col-md-9 col-xl-9 mb-2 mb-md-0"><input class="form-control form-control-lg" type="text" placeholder="Üniversite Ara"></div>
+                        <div class="col-12 col-md-3"><button class="btn btn-primary btn-block btn-lg" type="submit">Ara</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<section class="features-icons bg-light text-center">
+    <div class="container">
+        <div class="row" style="margin: 0px -30px;">
+            <div class="col">
+                <h1 style="margin: 0 0 45px 0;">Üniversite neye göre seçilir?</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="mx-auto features-icons-item mb-5 mb-lg-0 mb-lg-3">
+                    <div class="d-flex features-icons-icon"><i class="fa fa-university m-auto text-primary" data-bs-hover-animate="pulse"></i></div>
+                    <h3 style="font-family: Roboto, sans-serif;">Tür</h3>
+                    <p class="lead mb-0" style="font-family: Roboto, sans-serif;">Devlet Üniversitesi mi<br>Yoksa Özel Üniversite mi ?</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mx-auto features-icons-item mb-5 mb-lg-0 mb-lg-3">
+                    <div class="d-flex features-icons-icon"><i class="icon-plane m-auto text-primary" data-bs-hover-animate="pulse"></i></div>
+                    <h3 style="font-family: Roboto, sans-serif;">Ulaşım</h3>
+                    <p class="lead mb-0" style="font-family: Roboto, sans-serif;">Bulunduğu şehir önemli mi?</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mx-auto features-icons-item mb-5 mb-lg-0 mb-lg-3">
+                    <div class="d-flex features-icons-icon"><i class="fa fa-sort-amount-asc m-auto text-primary" data-bs-hover-animate="pulse"></i></div>
+                    <h3 style="font-family: Roboto, sans-serif;">Sıralama</h3>
+                    <p class="lead mb-0" style="font-family: Roboto, sans-serif;">En iyi üniversite en yüksek<br>puanda olan mı?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="showcase">
+    <div class="container-fluid p-0">
+        <div class="row no-gutters">
+            <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background: url({% static 'assets/img/1.jpg' %}) center / contain no-repeat;"><span></span></div>
+            <div class="col-lg-5 my-auto order-lg-1 showcase-text ml-5">
+                <h2>İş İmkanları</h2>
+                <p class="lead mb-0">İş imkanları üniversiteden mezun olduktan sonra en gerekli faktörlerden birisidir. Mezun olduktan sonra iş imkanlarına göre işe girmek gerekir. Bir üniversite seçerken, öncelikle o üniversitenin mezunlarının iş bulup bulamadığına bakmak
+                    akıllıca olabilir.</p>
+            </div>
+        </div>
+        <div class="row no-gutters">
+            <div class="col-lg-6 text-white showcase-img" style="background: url({% static 'assets/img/2.jpeg'%}) center / contain no-repeat;"><span></span></div>
+            <div class="col-lg-6 my-auto order-lg-1 showcase-text">
+                <h2>Kazanılan bilgiler</h2>
+                <p class="lead mb-0">Üniversitelerin bir çoğunda çok değerli bilgiler elde etmek mümkünken, bazı kesimlerimde eğitim şartlarından ve profesörlerin kalite farkından dolayı farklılıklar olabiliyor.</p>
+            </div>
+        </div>
+        <div class="row no-gutters">
+            <!-- @ts-ignore -->
+            <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background: url({% static 'assets/img/3.jpg' %}) center / auto no-repeat;"><span></span></div>
+            <div class="col-lg-5 my-auto order-lg-1 showcase-text ml-5">
+                <h2>Yurtdışı imkanları</h2>
+                <p class="lead mb-0">Üniversiteleri seçerken yurtdışı imkanlarına da dikkat ederek bir üniversite seçmek ileride çok büyük farklara yol açabilmektedir.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="testimonials text-center bg-light">
+    <div class="container">
+        <h2 class="mb-5">Rehber Yazılarında İnsanlar Neler Diyor</h2>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img class="rounded-circle img-fluid mb-3" src="{% static 'assets/img/testimonials-1.jpg'%}">
+                    <h5>Ayşe H.</h5>
+                    <p class="font-weight-light mb-0" style="font-family: Roboto, sans-serif;">Devlet üniversitesinin önemi<br>anlatmakla bitmez.</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img class="rounded-circle img-fluid mb-3" src="{% static 'assets/img/testimonials-2.jpg'%}">
+                    <h5>Mehmet B.</h5>
+                    <p class="font-weight-light mb-0" style="font-family: Roboto, sans-serif;">En önemli şey Üniversitenin<br>insanlar tarafından bakış açısı.</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img class="rounded-circle img-fluid mb-3" src="{% static 'assets/img/testimonials-3.jpg'%}">
+                    <h5>Fatma S.</h5>
+                    <p class="font-weight-light mb-0">Yurtdışı herşey demektir.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="call-to-action text-white text-center" style="background:url({%static 'assets/img/bg-masthead.jpg'%}) no-repeat center center;background-size:cover;">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-9 mx-auto">
+                <h2 class="mb-4">Yeni güncellemelerden haberdar olmak için<br>mail aderesinizi giriniz</h2>
+            </div>
+            <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+                <form>
+                    <div class="form-row">
+                        <div class="col-12 col-md-9 mb-2 mb-md-0"><input class="form-control form-control-lg" type="email" placeholder="Mail adresinizi giriniz"></div>
+                        <div class="col-12 col-md-3"><button class="btn btn-primary btn-block btn-lg" type="submit">Kayıt Ol</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
