@@ -14,11 +14,11 @@ def universityList(request):
 def eventList(request):
     return render(request, 'users/eventList.html', {})
 
-def blogList(request):
-    return render(request, 'users/blogList.html', {})
-
 def profile(request):
     return render(request, 'users/profile.html', {})
+
+def profileEdit(request):
+    return render(request, 'users/profileEdit.html', {})
 
 
 

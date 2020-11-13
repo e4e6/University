@@ -82,14 +82,13 @@
     {% else %}
         <body onload="showAlertMessage(2)">
     {% endif %}
-{% else %}
-    <body onload="showAlertMessage(3)">
 {% endif %}
+<body>
     <nav class="navbar navbar-light navbar-expand fixed-top bg-light navigation-clean" id="navbar">
         <div class="container-fluid"><a class="navbar-brand" data-bs-hover-animate="swing" href="{% url 'users:index' %}"><i class="fa fa-home BrandIcon"></i>Üniversite</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="{% url 'users:universityList' %}" style="color: rgb(0,0,0);" data-bs-hover-animate="swing">Üniversiteler</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'universities:index' %}" style="color: rgb(0,0,0);" data-bs-hover-animate="swing">Üniversiteler</a></li>
                     <li class="nav-item"><a class="nav-link active" href="{% url 'users:eventList' %}" style="color: rgb(0,0,0);" data-bs-hover-animate="swing">Etkinlikler</a></li>
                     <li class="nav-item"><a class="nav-link" href="#" style="color: rgb(0,0,0);" data-bs-hover-animate="swing">Tercih Robotu</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'blogs:index' %}" style="color: rgb(0,0,0);" data-bs-hover-animate="swing">Rehber Yazıları</a></li>
@@ -113,8 +112,8 @@
                             <div class="btn-group" data-bs-hover-animate="pulse">
                                 <a class="btn" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false"><i class="fa fa-navicon" style="margin-left: 50px;padding-right: 25px;padding-left: 0px;font-size: 30px;"></i></a>
                                 <div class="dropdown-menu dropdown-menu-lg-right">
-                                    <button class="dropdown-item" type="button">Profile</button>
-                                    <button class="dropdown-item" type="button">Settings</button>
+                                    <a href="{% url 'users:profile' %}" class="dropdown-item">Profile</a>
+                                    <a href="{% url 'users:profileEdit' %}" class="dropdown-item">Settings</a>
                                     <a href="{% url 'users:logout' %}" class="dropdown-item">Logout</a>
                                 </div>
                             </div>
@@ -206,11 +205,9 @@
     </div>
 
 
-    {% if alert_message %}
-        <div id="snackbar1">
-            <b>{{alert_message}}</b>
-        </div>
-    {% endif %}
+    <div id="snackbar1">
+        <b>{{alert_message}}</b>
+    </div>
 
 
     {% block content %}{% endblock content %}
@@ -247,19 +244,21 @@
     <script>
         function showAlertMessage(color) {
             var x = document.getElementById("snackbar1");
-            if(color == 1){
-                x.className = "show makegreen";
-                setTimeout(function(){ x.className = x.className.replace("show makegreen", "makegreen"); }, 3000);
-            }else if(color == 2){
-                x.className = "show makered";
-                setTimeout(function(){ x.className = x.className.replace("show makered", "makered"); }, 3000);
-            }
-            else{
-                x.className = "show";
-                setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+            if(x != null){
+                if(color == 1){
+                    x.className = "show makegreen";
+                    setTimeout(function(){ x.className = x.className.replace("show makegreen", "makegreen"); }, 3000);
+                }
+                else if(color == 2){
+                    x.className = "show makered";
+                    setTimeout(function(){ x.className = x.className.replace("show makered", "makered"); }, 3000);
+                }
             }
         }
+
     </script>
+    {% block Customscript %}{% endblock Customscript %}
+
 </body>
 
 </html>
