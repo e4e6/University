@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'Apps.users.apps.UsersConfig',
     'Apps.blogs.apps.BlogsConfig',
     'Apps.universities.apps.UniversitiesConfig',
+    'Apps.apptercih',
 ]
 
 MIDDLEWARE = [
@@ -122,6 +123,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True   #587
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = 'portaluniversite@gmail.com'
+EMAIL_HOST_PASSWORD = '6026026022'
+EMAIL_USE_SSL = False  #465
 
 
 django_heroku.settings(locals())

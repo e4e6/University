@@ -15,10 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth import views as auth_views
+from django.urls import reverse_lazy
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('blogs/', include('Apps.blogs.urls')),
     path('universities/', include('Apps.universities.urls')),
     path('', include('Apps.users.urls')),
+    path('apptercih/',include('Apps.apptercih.urls')),
 ]
