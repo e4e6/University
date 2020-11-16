@@ -1,85 +1,65 @@
 {% extends "users/base.html" %}
-{% block content %}
 {% load static %}
 
-    <section style="background: url({% static 'assets/img/boun3.jpg' %}) center / contain repeat-x, #bababa;width: 100%;margin-top: 55px;position: relative;z-index: -1;min-height: 100vh;">
-        <section style="width: 100%;height: 100%;background: #0500ff;opacity: 0.50; min-height: 100vh;"></section>
-        <h1 class="header_class">Boğaziçi Üniversitesi</h1>
-    </section>
-    <section style="width: 95%;background: #ffffff;border-radius: 10px;margin-left: auto;margin-right: auto;margin-top: -100px;box-shadow: 0px 0px 20px;text-align: center;margin-bottom: 30px; padding-bottom: 30px;">
-        <div style="text-align: right;margin-top: -180px;margin-right: 20px;font-size: 40px;color: rgb(3,94,184);">
-            <div><i class="fa fa-pinterest-square" data-bs-hover-animate="pulse" style="color: rgb(223,0,25);" title="pinterest"></i><i class="fa fa-twitter-square" data-bs-hover-animate="pulse" style="margin-right: 7px;margin-left: 7px;color: rgb(0,224,255);"
-                    title="twitter"></i><i class="fa fa-instagram" data-bs-hover-animate="pulse" style="color: #000000;" title="instagram"></i><i class="fa fa-linkedin-square" data-bs-hover-animate="pulse" style="color: rgb(0,123,182);margin-right: 7px;margin-left: 7px;"
-                    title="linkedin"></i><i class="fa fa-facebook-square" data-bs-hover-animate="pulse" title="facebook"></i></div>
-            <div style="font-size: 25px;text-align: right;color: rgb(0,0,0);"><a data-bs-hover-animate="pulse" class="websiteLink" href="http://www.boun.edu.tr/" style="font-size: 20px;color: rgb(0,0,0);text-align: right;">www.boun.edu.tr</a></div>
-        </div>
-        <div><img class="d-inline-block" style="background: url({% static 'assets/img/Boğaziçi_Üniversitesi_Logo.png' %}) center / cover no-repeat, #ffffff;min-width: 80px;min-height: 80px;width: 240px;height: 240px;margin-top: -200px;border-radius: 136px;">
-            <h1 style="margin-top: 20px;">Boğaziçi Üniversitesi</h1>
-            <div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <p style="margin-bottom: 0px;"><br>Bağışlar ve yardımlarla finanse edilen Robert Kolej’in ilk binası Hamlin Hall’un inşaatı 1871 yılında tamamlanmıştır. Bugün Güney Kampüs dediğimiz kampüsteki tüm tarihi binalar Birinci Dünya Savaşı'ndan önce inşa edilmiş
-                                ve inşalarında kampüste bulunan ocaktan çıkarılan mavi kireçtaşı kullanılmıştır.<br></p>
-                            <p style="margin-bottom: 0px;"><br>Mart 1971'de dönemin başkanı Dr. Everton, Robert Kolej'in üzerine herhangi bir kampüs üzerinde bağımsız bir üniversitenin kurulması için Türk hükümetini teşvik eden önergenin 26 Ocak 1971'de Yönetim Kurulu tarafından kabul
-                                edildiğini açıklamıştır. Çalışmalar 1971 yazında sonuçlandırılmıştır. Binaları, kütüphanesi, laboratuvarları, tüm imkanları ve personeliyle 118 dönümlük bugünün Güney Kampüsü 10 Eylül 1971'de tamamen Türk hükümetinin üzerine
-                                geçmiştir. Boğaziçi Üniversitesi, yüz yıldan fazla Robert Kolej'in kampüsü olarak kullanılan alana resmi olarak kurulmuştur.<br><br></p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col offset-0">
-                            <div class="row">
-                                <div class="col-1 col-xl-1 offset-2 text-center d-xl-flex align-self-center my-auto justify-content-xl-center align-items-xl-center activeTab" id="nav_1" style="min-height: 75px;width: 95px;height: 95px;padding-right: 5px;padding-left: 5px;max-width: 150px;min-width: 75px;max-height: 150px; border-radius: 5px;" onclick="navClick(this.id)">
-                                    <div style="margin-top: 15px;min-height: 60px;width: 80px;position: relative;padding-top: 15px;"><i class="fa fa-university" style="height: 30px;margin-bottom: 10px;font-size: 30px;"></i>
-                                        <p style="vertical-align: bottom;font-size: 12px;">BİLGİ</p>
-                                    </div>
-                                </div>
-                                <div class="col-1 col-xl-1 text-center d-xl-flex align-self-center my-auto justify-content-xl-center align-items-xl-center navItems" id="nav_2" style="min-height: 75px;width: 95px;height: 95px;padding-right: 5px;padding-left: 5px;max-width: 150px;min-width: 75px;max-height: 150px; border-radius: 5px;" onclick="navClick(this.id)">
-                                    <div style="margin-top: 15px;min-height: 60px;width: 80px;position: relative;padding-top: 15px;"><i class="fa fa-graduation-cap" style="height: 30px;margin-bottom: 10px;font-size: 30px;"></i>
-                                        <p style="vertical-align: bottom;font-size: 12px;">BÖLÜMLER</p>
-                                    </div>
-                                </div>
-                                <div class="col-1 col-xl-1 text-center d-xl-flex align-self-center my-auto justify-content-xl-center align-items-xl-center navItems" id="nav_3" style="min-height: 75px;width: 95px;height: 95px;padding-right: 5px;padding-left: 5px;max-width: 150px;min-width: 75px;max-height: 150px; border-radius: 5px;" onclick="navClick(this.id)">
-                                    <div style="margin-top: 15px;min-height: 60px;width: 80px;position: relative;padding-top: 15px;"><i class="fa fa-address-card" style="height: 30px;margin-bottom: 10px;font-size: 30px;"></i>
-                                        <p style="vertical-align: bottom;font-size: 12px;">KADRO</p>
-                                    </div>
-                                </div>
-                                <div class="col-1 col-xl-1 text-center d-xl-flex align-self-center my-auto justify-content-xl-center align-items-xl-center navItems" id="nav_4" style="min-height: 75px;width: 95px;height: 95px;padding-right: 5px;padding-left: 5px;max-width: 150px;min-width: 75px;max-height: 150px; border-radius: 5px;" onclick="navClick(this.id)">
-                                    <div style="margin-top: 15px;min-height: 60px;width: 80px;position: relative;padding-top: 15px;"><i class="fa fa-calendar-check-o" style="height: 30px;margin-bottom: 10px;font-size: 30px;"></i>
-                                        <p style="vertical-align: bottom;font-size: 12px;">TAKVİM</p>
-                                    </div>
-                                </div>
-                                <div class="col-1 col-xl-1 text-center d-xl-flex align-self-center my-auto justify-content-xl-center align-items-xl-center navItems" id="nav_5" style="min-height: 75px;width: 95px;height: 95px;padding-right: 5px;padding-left: 5px;max-width: 150px;min-width: 75px;max-height: 150px; border-radius: 5px;" onclick="navClick(this.id)">
-                                    <div style="margin-top: 15px;min-height: 60px;width: 80px;position: relative;padding-top: 15px;"><i class="fa fa-bookmark" style="height: 30px;margin-bottom: 10px;font-size: 30px;"></i>
-                                        <p style="vertical-align: bottom;font-size: 12px;">HİZMETLER</p>
-                                    </div>
-                                </div>
-                                <div class="col-1 col-xl-1 text-center d-xl-flex align-self-center my-auto justify-content-xl-center align-items-xl-center navItems" id="nav_6" style="min-height: 75px;width: 95px;height: 95px;padding-right: 5px;padding-left: 5px;max-width: 150px;min-width: 75px;max-height: 150px; border-radius: 5px;" onclick="navClick(this.id)">
-                                    <div style="margin-top: 15px;min-height: 60px;width: 80px;position: relative;padding-top: 15px;"><i class="fa fa-info" style="height: 30px;margin-bottom: 10px;font-size: 30px;"></i>
-                                        <p style="vertical-align: bottom;font-size: 12px;">DUYURULAR</p>
-                                    </div>
-                                </div>
-                                <div class="col-1 col-xl-1 text-center d-xl-flex align-self-center my-auto justify-content-xl-center align-items-xl-center navItems" id="nav_7" style="min-height: 75px;width: 95px;height: 95px;padding-right: 5px;padding-left: 5px;max-width: 150px;min-width: 75px;max-height: 150px; border-radius: 5px;" onclick="navClick(this.id)">
-                                    <div style="margin-top: 15px;min-height: 60px;width: 80px;position: relative;padding-top: 15px;"><i class="fa fa-camera" style="height: 30px;margin-bottom: 10px;font-size: 30px;"></i>
-                                        <p style="vertical-align: bottom;font-size: 12px;">FOTOĞRAFLAR</p>
-                                    </div>
-                                </div>
-                                <div class="col-1 col-xl-1 text-center d-xl-flex align-self-center my-auto justify-content-xl-center align-items-xl-center navItems" id="nav_8" style="min-height: 75px;width: 95px;height: 95px;padding-right: 5px;padding-left: 5px;max-width: 150px;min-width: 75px;max-height: 150px; border-radius: 5px;" onclick="navClick(this.id)">
-                                    <div style="margin-top: 15px;min-height: 60px;width: 80px;position: relative;padding-top: 15px;"><i class="fa fa-american-sign-language-interpreting" style="height: 30px;margin-bottom: 10px;font-size: 30px;"></i>
-                                        <p style="vertical-align: bottom;font-size: 12px;">KULÜPLER</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">a</div>
+
+
+{% block customStyle %}
+    <style>
+        .form-control-borderless {
+        border: none;
+    }
+
+    .form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+        border: none;
+        outline: none;
+        box-shadow: none;
+    }
+    </style>
+{% endblock customStyle %}
+
+
+{% block content %}
+
+    <div class="container" style="margin-top: 100px;" >
+        <div class="row">
+            <div class="col">
+                <div class="card m-auto" style="max-width:850px;">
+                    <div class="card-body">
+                        <form class="d-flex align-items-center">
+                            <i class="fa fa-search" style="font-size: 30px; margin-right: 20px;"></i>
+                            <input type="search" class="form-control form-control-lg flex-shrink-1 form-control-borderless" placeholder="Search topics or keywords" name="searchbar" />
+                            <button class="btn btn-primary btn-lg" type="submit">Search</button>
+                        </form>
                     </div>
                 </div>
             </div>
+            {% if user.is_superuser %}
+            <div class="col-1 align-middle" style="text-align: center;">
+                <a class="btn" href="{% url 'universities:createUniversity' %}" data-bs-hover-animate="pulse">
+                    <i class="fa fa-plus-circle d-xl-flex justify-content-xl-end" style="font-size: 50px;margin-top: 25px;color: #007bff;"></i>
+                </a>
+            </div>
+            {% endif %}
         </div>
-    </section>
-
+        <div class="row" style="margin-top: 25px;">
+            <div class="col-4 d-flex flex-column justify-content-xl-center align-items-xl-center"><img class="img-fluid" data-aos="fade-up" src=" {% static 'assets/img/boun3.jpg' %} ">
+                <h1>Heading</h1>
+                <p>Paragraph</p>
+            </div>
+            <div class="col-4 d-flex flex-column justify-content-xl-center align-items-xl-center"><img class="img-fluid" data-aos="fade-up" src=" {% static 'assets/img/boun3.jpg' %} ">
+                <h1>Heading</h1>
+                <p>Paragraph</p>
+            </div>
+            <div class="col-4 d-flex flex-column justify-content-xl-center align-items-xl-center"><img class="img-fluid" data-aos="fade-up" src=" {% static 'assets/img/boun3.jpg' %} ">
+                <h1>Heading</h1>
+                <p>Paragraph</p>
+            </div>
+            <div class="col-4 d-flex flex-column justify-content-xl-center align-items-xl-center"><img class="img-fluid" data-aos="fade-up" src=" {% static 'assets/img/boun3.jpg' %} ">
+                <h1>Heading</h1>
+                <p>Paragraph</p>
+            </div>
+        </div>
+    </div>
 
 {% endblock content %}
 
@@ -87,16 +67,6 @@
 
 {% block Customscript %}
     <script>
-        var last_clicked_id = "nav_1";
-        function navClick(new_clicked_id) {
-            if(last_clicked_id != new_clicked_id){
-                $("#" + last_clicked_id).removeClass('activeTab');
-                $("#" + last_clicked_id).addClass('navItems');
-                $("#" + new_clicked_id).removeClass('navItems');
-                $("#" + new_clicked_id).addClass('activeTab');
 
-                last_clicked_id = new_clicked_id;
-            }
-        }
     </script>
 {% endblock Customscript %}
