@@ -28,7 +28,7 @@ class UniversityAdmin(admin.ModelAdmin):
         ('Student Information',               {'fields': ['numberOfLocalStudents', 'numberOfForeignStudents', 'universityType']}),
         # ('Links',               {'fields': ['website_link', 'pinterest_link', 'twitter_link', 'instagram_link', 'linkedin_link', 'facebook_link']}),
         ('Links',               {'fields': ['website_link',]}),
-        ('Photo Paths',               {'fields': ['profile_photo_path', 'cover_photo_path']}),
+        ('Photo Paths',               {'fields': ['profile_photo', 'cover_photo']}),
     ]
     inlines = [FacultyInline]
 

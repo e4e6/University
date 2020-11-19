@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect
 from .models import University
 
 # Create your views here.
@@ -16,3 +17,5 @@ def createUniversity(request):
         return render(request, 'universities/createUniversity.html', {})
     else:
         return render(request, 'universities/index.html', {})
+
+

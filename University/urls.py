@@ -18,6 +18,9 @@ from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from django.urls import reverse_lazy
 
+from django.conf.urls.static import static
+from django.conf import settings
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('blogs/', include('Apps.blogs.urls')),
@@ -25,3 +28,5 @@ urlpatterns = [
     path('', include('Apps.users.urls')),
     path('apptercih/',include('Apps.apptercih.urls')),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

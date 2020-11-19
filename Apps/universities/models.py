@@ -2,7 +2,16 @@ from django.db import models
 
 # Create your models here.
 
+
+
+
 class University(models.Model):
+
+    def upload_to_func(self,filename):
+        return "images/{}/{}".format(self.id, filename)
+
+
+
     name = models.CharField(max_length=200)
     info = models.CharField(max_length=200, default="")
 
@@ -13,9 +22,13 @@ class University(models.Model):
     numberOfForeignStudents = models.CharField(max_length=200, default="")
     universityType = models.CharField(max_length=200, default="")
 
-    profile_photo_path = models.CharField(max_length=200, default="")
-    cover_photo_path = models.CharField(max_length=200, default="" )
-    images = models.CharField(max_length=200, default="", blank=True, null=True)
+    # profile_photo_path = models.CharField(max_length=200, default="")
+    # cover_photo_path = models.CharField(max_length=200, default="" )
+
+    profile_photo = models.ImageField(null=True, blank=True, upload_to=upload_to_func)
+    cover_photo = models.ImageField(null=True, blank=True, upload_to=upload_to_func)
+    # images = models.CharField(max_length=200, default="", blank=True, null=True)
+
 
 
     website_link = models.CharField(max_length=200, default="")
@@ -38,11 +51,13 @@ class University(models.Model):
     def getwebsitelink(self):
         return 'http://' + self.website_link + '/'
 
-    def getprofilePhoto(self):
-        return '/static/assets/img/universities/' + str(self.id) + '/' + self.profile_photo_path
 
-    def getcoverPhoto(self):
-        return '/static/assets/img/universities/' + str(self.id) + '/' + self.cover_photo_path
+
+    # def getprofilePhoto(self):
+    #     return '/static/assets/img/universities/' + str(self.id) + '/' + self.profile_photo_path
+
+    # def getcoverPhoto(self):
+    #     return '/static/assets/img/universities/' + str(self.id) + '/' + self.cover_photo_path
 
 
 class Faculty(models.Model):

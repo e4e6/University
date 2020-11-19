@@ -39,7 +39,6 @@
 
 
 {% block content %}
-
     <div class="container" style="margin-top: 100px;" >
         <div class="row">
             <div class="col">
@@ -63,9 +62,16 @@
         </div>
         <div class="row" style="margin-top: 25px;">
             {% for university in universities %}
-                <div class="col-4">
+                {% comment %} <div class="col-4">
                     <a class="specialA d-flex flex-column justify-content-xl-center align-items-xl-center" href="{% url 'universities:detail' university.id %}">
                         <img class="img-fluid" data-aos="fade-up" src=" {{ university.getcoverPhoto }} ">
+                        <h2 class="text-overflow headerClass">{{university.name}}</h1>
+                        <p class="text-overflow">{{university.info}}</p>
+                    </a>
+                </div> {% endcomment %}
+                <div class="col-4">
+                    <a class="specialA d-flex flex-column justify-content-xl-center align-items-xl-center" href="{% url 'universities:detail' university.id %}">
+                        <img class="img-fluid" data-aos="fade-up" src="{{university.cover_photo.url}}">
                         <h2 class="text-overflow headerClass">{{university.name}}</h1>
                         <p class="text-overflow">{{university.info}}</p>
                     </a>
