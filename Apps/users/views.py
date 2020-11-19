@@ -15,6 +15,8 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
 from .utils import token_generator
 from django.conf import settings
+from django.http import HttpResponse
+from django.contrib.auth.hashers import check_password
 
 User = get_user_model()
 
@@ -39,6 +41,9 @@ def profile(request):
 
 def profileEdit(request):
     return render(request, 'users/profileEdit.html', {})
+
+def sayfasifredegis(request):
+    return render(request, 'users/password_change.html', {})
 
 
 # NECESSARY FUNCIONS
@@ -94,22 +99,23 @@ def logout(request):
     return render(request, 'users/index.html', {'alert_message': 'Başarılı', 'alertColor': 'successfull'})
 
 
+
+
 def password_change(request):
+    
     if request.method == 'POST':
-        form = PasswordChangeForm(request.user, request.POST)
-        if form.is_valid():
-            user = form.save()
-            update_session_auth_hash(request, user)  # Important!
-            messages.success(
-                request, 'Your password was successfully updated!')
-            return redirect('users:password_change')
-        else:
-            messages.error(request, 'Please correct the error below.')
-    else:
-        form = PasswordChangeForm(request.user)
-    return render(request, 'users/password_change.html', {
-        'form': form
-    })
+        current_user = request.user
+        if check_password(request.POST['password'], current_user.password):
+            if request.POST['password1'] == request.POST['password2'] :
+                current_user.set_password(request.POST['password1'])
+                current_user.save()
+                update_session_auth_hash(request, current_user)
+                #return redirect('user:password_change_done')
+                return HttpResponse("Şifreniz Değiştirildi")
+            else: return HttpResponse("Yeni Şifreler Eşleşmedi")
+        else : return HttpResponse("Şifrenizi Hatalı Girdiniz")
+    else: return HttpResponse("İlginç Bir Hata")
+
 
 
 class VerificationView(View):
