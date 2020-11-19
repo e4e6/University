@@ -10,8 +10,6 @@ class University(models.Model):
     def upload_to_func(self,filename):
         return "images/{}/{}".format(self.id, filename)
 
-
-
     name = models.CharField(max_length=200)
     info = models.CharField(max_length=200, default="")
 
@@ -27,7 +25,7 @@ class University(models.Model):
 
     profile_photo = models.ImageField(null=True, blank=True, upload_to=upload_to_func)
     cover_photo = models.ImageField(null=True, blank=True, upload_to=upload_to_func)
-    # images = models.CharField(max_length=200, default="", blank=True, null=True)
+    images = models.CharField(max_length=200, default="", blank=True, null=True)
 
 
 
