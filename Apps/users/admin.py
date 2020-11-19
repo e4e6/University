@@ -9,7 +9,6 @@ class CustomUserAdmin(UserAdmin):
     form = CustomUserChangeForm
     model = CustomUser
     list_display = ('username','email','GetFollowingList','GetFollowerList')
-
     fieldsets = UserAdmin.fieldsets + (('Additional infos', {'fields': ('age','followingList', )}),)
     filter_horizontal = ('followingList',)
 

@@ -1,0 +1,71 @@
+body {
+  margin-top: 70px;
+}
+
+.navbar-brand {
+  font-size: 30px;
+}
+
+.LoginBtn {
+  min-width: 90px;
+  margin: 10px;
+  border-radius: 7px;
+}
+
+.RegisterBtn {
+  min-width: 90px;
+  border-radius: 7px;
+}
+
+#navbarDiv {
+  margin-left: auto;
+}
+
+BrandIcon {
+  color: rgb(0,123,255);
+  font-size: 10px;
+}
+
+
+
+body {
+  font-family: Courier,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif;
+}
+
+#coverPhoto {
+  max-height: 400px;
+}
+
+.header_class {
+  position: absolute;
+  left: 10px;
+  top: 25px;
+  color: white;
+}
+
+#follow_icon {
+  background: #121522;
+  color: rgb(19,3,82);
+}
+
+.navItems {
+  color: black;
+  background-color: #ffffff;
+  opacity: 0.6;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.activeTab {
+  background-color: #9C27B0;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.navItems:hover {
+  background-color: #F4f4f4;
+  color: #555555;
+  opacity: 1;
+}
+
+
