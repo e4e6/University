@@ -26,11 +26,10 @@ BrandIcon {
   font-size: 10px;
 }
 
-.fa.fa-home.BrandIcon {
-}
+
 
 body {
-  font-family: Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif;
+  font-family: Courier,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif;
 }
 
 #coverPhoto {
