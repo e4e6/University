@@ -1,0 +1,157 @@
+body {
+  margin-top: 70px;
+}
+
+.navbar-brand {
+  font-size: 30px;
+}
+
+.LoginBtn {
+  min-width: 90px;
+  margin: 10px;
+  border-radius: 7px;
+}
+
+.RegisterBtn {
+  min-width: 90px;
+  border-radius: 7px;
+}
+
+#navbarDiv {
+  margin-left: auto;
+}
+
+body {
+  font-family: Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif;
+}
+
+#coverPhoto {
+  max-height: 400px;
+}
+
+.header_class {
+  position: absolute;
+  left: 10px;
+  top: 25px;
+  color: white;
+}
+
+#follow_icon {
+  background: #121522;
+  color: rgb(19,3,82);
+}
+
+
+.universityTabs{
+  padding-right: 5px;
+  padding-left: 5px;
+  min-height: 75px;
+  width: 95px;
+  height: 95px;
+  max-width: 150px;
+  min-width: 75px;
+  max-height: 150px; 
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.inactiveTab {
+  color: black;
+  background-color: #ffffff;
+  opacity: 0.6;
+  transition: 0.3s;
+}
+
+.activeTab {
+  background-color: #9C27B0;
+  color: #ffffff;
+  box-shadow: 0px 0px 8px #555555;
+}
+
+.inactiveTab:hover {
+  background-color: #F4f4f4;
+  color: #555555;
+  opacity: 1;
+}
+
+
+.features-boxed {
+  color: #313437;
+}
+
+.features-boxed p {
+  color: #7d8285;
+}
+
+.features-boxed h2 {
+  font-weight: bold;
+  margin-bottom: 40px;
+  padding-top: 40px;
+  color: inherit;
+}
+
+@media (max-width:767px) {
+  .features-boxed h2 {
+    margin-bottom: 25px;
+    padding-top: 25px;
+    font-size: 24px;
+  }
+}
+
+.features-boxed .intro {
+  font-size: 16px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.features-boxed .intro p {
+  margin-bottom: 0;
+}
+
+.features-boxed .features {
+  padding: 50px 0;
+}
+
+.features-boxed .item {
+  text-align: center;
+}
+
+.features-boxed .item .box {
+  text-align: center;
+  padding: 30px;
+  /* background-color: #fff; */
+  background-color: #eef4f7;
+  margin-bottom: 30px;
+}
+
+.features-boxed .item .icon {
+  font-size: 60px;
+  color: #1485ee;
+  margin-top: 20px;
+  margin-bottom: 35px;
+}
+
+.features-boxed .item .name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 8px;
+  margin-top: 0;
+  color: inherit;
+}
+
+.features-boxed .item .description {
+  font-size: 15px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.form-control-borderless {
+  border: none;
+  font-size: 80px;
+}
+
+.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
