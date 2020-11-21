@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth import authenticate, logout as logoutUser, login as loginUser
 from django.utils import timezone
 from django.views.generic.base import View
-from .models import CustomUser
+from .models import CustomUser, Subscribers
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import PasswordChangeForm
@@ -15,7 +15,7 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
 from .utils import token_generator
 from django.conf import settings
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.hashers import check_password
 
 User = get_user_model()
@@ -44,6 +44,24 @@ def profileEdit(request):
 
 def sayfasifredegis(request):
     return render(request, 'users/password_change.html', {})
+
+def kullanicisozlesmesi(request):
+    return render(request, 'users/kullanicisozlesmesi.html', {})
+
+def gizliliksozlesmesi(request):
+    return render(request, 'users/gizliliksozlesmesi.html', {})
+
+def subscribe(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        if not email:
+            return HttpResponseRedirect(reverse('users:index'))
+        return HttpResponseRedirect(reverse(('users:aftersubsribe'), args=(email,)))
+
+def aftersubsribe(request,email):
+    subcriber = Subscribers.objects.get_or_create(email=email)
+    return render(request, 'users/index.html', {'alert_message': 'Abone olduğunuz için teşekkür ederiz', 'alertColor': 'successfull'})
+
 
 
 # NECESSARY FUNCIONS

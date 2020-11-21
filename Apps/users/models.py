@@ -15,3 +15,9 @@ class CustomUser(AbstractUser):
     GetFollowingList.short_description = 'Following'
     GetFollowerList.short_description = 'Follower'
 
+class Subscribers(models.Model):
+    email = models.EmailField(max_length=200)
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.email

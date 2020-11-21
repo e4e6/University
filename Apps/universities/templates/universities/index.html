@@ -42,12 +42,13 @@
     <div class="container" style="margin-top: 100px;" >
         <div class="row">
             <div class="col">
-                <div class="card m-auto" style="max-width:850px;">
+                <div class="card ml-auto mr-auto" style="max-width:850px;">
                     <div class="card-body">
-                        <form class="d-flex align-items-center">
+                        <form class="d-flex align-items-center"  action="{% url 'universities:searchUniversity' %}" method="POST">
+                            {% csrf_token %}
                             <i class="fa fa-search" style="font-size: 30px; margin-right: 20px;"></i>
-                            <input type="search" class="form-control form-control-lg flex-shrink-1 form-control-borderless" placeholder="Üniversite Ara" name="searchbar" />
-                            <button class="btn btn-primary btn-lg" type="submit">Search</button>
+                            <input type="search" class="form-control flex-shrink-1 form-control-borderless" required placeholder="Üniversite Ara" name="searchText" />
+                            <button class="btn btn-primary" type="submit">Search</button>
                         </form>
                     </div>
                 </div>
@@ -62,13 +63,6 @@
         </div>
         <div class="row" style="margin-top: 25px;">
             {% for university in universities %}
-                {% comment %} <div class="col-4">
-                    <a class="specialA d-flex flex-column justify-content-xl-center align-items-xl-center" href="{% url 'universities:detail' university.id %}">
-                        <img class="img-fluid" data-aos="fade-up" src=" {{ university.getcoverPhoto }} ">
-                        <h2 class="text-overflow headerClass">{{university.name}}</h1>
-                        <p class="text-overflow">{{university.info}}</p>
-                    </a>
-                </div> {% endcomment %}
                 <div class="col-4">
                     <a class="specialA d-flex flex-column justify-content-xl-center align-items-xl-center" href="{% url 'universities:detail' university.id %}">
                         <img class="img-fluid" data-aos="fade-up" src="{{university.cover_photo.url}}">

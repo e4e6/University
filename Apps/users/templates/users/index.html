@@ -8,9 +8,10 @@
                 <h1 class="mb-5" style="font-family: Roboto, sans-serif;">Hayalinizdeki <br>üniversiteyi bulun</h1>
             </div>
             <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-                <form>
+                <form action="{% url 'universities:searchUniversity' %}" method="POST">
+                    {% csrf_token %}
                     <div class="form-row" data-bs-hover-animate="pulse">
-                        <div class="col-12 col-md-9 col-xl-9 mb-2 mb-md-0"><input class="form-control form-control-lg" type="text" placeholder="Üniversite Ara"></div>
+                        <div class="col-12 col-md-9 col-xl-9 mb-2 mb-md-0"><input class="form-control form-control-lg" type="text" required name="searchText" placeholder="Üniversite Ara"></div>
                         <div class="col-12 col-md-3"><button class="btn btn-primary btn-block btn-lg" type="submit">Ara</button></div>
                     </div>
                 </form>
@@ -110,9 +111,10 @@
                 <h2 class="mb-4">Yeni güncellemelerden haberdar olmak için<br>mail aderesinizi giriniz</h2>
             </div>
             <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-                <form>
+                <form action="{% url 'users:subscribe' %}" method="POST">
+                    {% csrf_token %}
                     <div class="form-row">
-                        <div class="col-12 col-md-9 mb-2 mb-md-0"><input class="form-control form-control-lg" type="email" placeholder="Mail adresinizi giriniz"></div>
+                        <div class="col-12 col-md-9 mb-2 mb-md-0"><input class="form-control form-control-lg" required type="email" name="email" placeholder="Mail adresinizi giriniz"></div>
                         <div class="col-12 col-md-3"><button class="btn btn-primary btn-block btn-lg" type="submit">Kayıt Ol</button></div>
                     </div>
                 </form>
@@ -122,3 +124,9 @@
 </section>
 
 {% endblock content %}
+
+{% block Customscript %}
+<script>
+{% comment %} window.location.href = ('#'); {% endcomment %}
+</script>
+{% endblock Customscript %}
