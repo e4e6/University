@@ -45,6 +45,9 @@ def profileEdit(request):
 def sayfasifredegis(request):
     return render(request, 'users/password_change.html', {})
 
+def passwordChangeDone(request):
+    return render(request, 'users/password_change_done.html', {})
+
 
 # NECESSARY FUNCIONS
 
@@ -111,7 +114,7 @@ def password_change(request):
                 current_user.save()
                 update_session_auth_hash(request, current_user)
                 #return redirect('user:password_change_done')
-                return HttpResponse("Şifreniz Değiştirildi")
+                return redirect('users:password_change_done')
             else: return HttpResponse("Yeni Şifreler Eşleşmedi")
         else : return HttpResponse("Şifrenizi Hatalı Girdiniz")
     else: return HttpResponse("İlginç Bir Hata")
