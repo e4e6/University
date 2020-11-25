@@ -31,5 +31,11 @@ urlpatterns = [
         'users:password_reset_complete'), template_name='users/password_reset_confirm.html'), name='password_reset_confirm'),
     path('password_reset_complete/', auth_views.PasswordResetCompleteView.as_view(
         template_name='users/password_reset_complete.html'), name='password_reset_complete'),
-    path('activate/<uidb64>/<token>', VerificationView.as_view(), name='activate')
+    path('activate/<uidb64>/<token>', VerificationView.as_view(), name='activate'),
+
+
+    path('kullanicisozlesmesi/', views.kullanicisozlesmesi, name='kullanicisozlesmesi'),
+    path('gizliliksozlesmesi/', views.gizliliksozlesmesi, name='gizliliksozlesmesi'),
+    path('subscribe/', views.subscribe, name='subscribe'),
+    path('subscribed/<str:email>', views.aftersubsribe, name='aftersubsribe')
 ]

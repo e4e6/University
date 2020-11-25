@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.2.0/aos.css">
     <link rel="stylesheet" href="{% static 'assets/css/style.css'%}">
 
+    <script data-ad-client="ca-pub-3994522688041075" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
     <style>
         #snackbar1 {
@@ -110,7 +111,6 @@
                                     <i class="fa fa-user-circle-o" style="font-size: 25px;margin-right: 15px;"></i>
                                     {{ user.username }}
                                 </a>
-
                             </div>
                             <div class="btn-group" data-bs-hover-animate="pulse">
                                 <a class="btn" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false"><i class="fa fa-navicon" style="margin-left: 50px;padding-right: 25px;padding-left: 0px;font-size: 30px;"></i></a>
@@ -155,11 +155,7 @@
                         </div>
                     </form>
                     <hr style="background-color: #bababa;" />
-<<<<<<< HEAD
                     <p class="text-center">Ya da <a class="text-decoration-none" href=" {% url 'users:password_reset'%}">Şifremi Unuttum</a></p>
-=======
-                    <p class="text-center">Ya da <a class="text-decoration-none" href="{% url 'users:password_reset' %}">Şifremi Unuttum</a></p>
->>>>>>> d2f7e96cbbb8317a6c0589cca036ce22d0becaf3
                     <p class="text-center">Hesabınız yoksa  <a class="text-decoration-none" data-dismiss="modal" data-toggle="modal" data-target="#signup" href="#">Kayıt Ol</a></p>
                 </div>
             </div>
@@ -228,9 +224,9 @@
                         <li class="list-inline-item"><span>⋅</span></li>
                         <li class="list-inline-item"><a href="#">İletişim</a></li>
                         <li class="list-inline-item"><span>⋅</span></li>
-                        <li class="list-inline-item"><a href="#">Kullanıcı Lisans Sözleşmesi</a></li>
+                        <li class="list-inline-item"><a href="{% url 'users:kullanicisozlesmesi' %}" >Kullanıcı Lisans Sözleşmesi</a></li>
                         <li class="list-inline-item"><span>⋅</span></li>
-                        <li class="list-inline-item"><a href="#">Gizlilik Poliçesi</a></li>
+                        <li class="list-inline-item"><a href="{% url 'users:gizliliksozlesmesi' %}">Gizlilik Poliçesi</a></li>
                     </ul>
                     <p class="text-muted small mb-4 mb-lg-0">© Üniversite 2020. Tüm Hakları Saklıdır</p>
                 </div>
