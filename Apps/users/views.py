@@ -74,13 +74,22 @@ def login(request):
     if request.method == 'POST':
         user = authenticate(
             username=request.POST['username'], password=request.POST['password'])
+
+
         if user is not None:
             # A backend authenticated the credentials
             loginUser(request, user)
             return render(request, 'users/index.html', {'alert_message': 'Başarılı', 'alertColor': 'successfull'})
+            
         else:
-            # No backend authenticated the credentials
-            return render(request, 'users/index.html', {'alert_message': 'Kullanıcı girişi yapılamadı Lütfen Tekrar deneyin', 'alertColor': 'dangerr'})
+            user2 = User.objects.filter(username=request.POST['username'])
+            if user2.count == 0:
+                return render(request, 'users/index.html', {'alert_message': 'Kullanıcı Adı bulunamadı', 'alertColor': 'dangerr'})
+            else:
+                if not user2[0].is_active:
+                    return render(request, 'users/index.html', {'alert_message': 'Lütfen Aktivasyon mailinden aktif hesabınızı aktif ediniz', 'alertColor': 'dangerr'})
+                else:
+                    return render(request, 'users/index.html', {'alert_message': 'Kullanıcı adınızla şifreniz uyuşmuyor, Lütfen Tekrar deneyin', 'alertColor': 'dangerr'})
 
 
 def register(request):
@@ -107,7 +116,7 @@ def register(request):
                 [user.email]
             )
             emailsend.send(fail_silently=False)
-            return render(request, 'users/index.html', {'alert_message': 'Başarılı', 'alertColor': 'successfull'})
+            return render(request, 'users/index.html', {'alert_message': 'Başarılı, Adresinize Aktivasyon Maili gönderilmiştir', 'alertColor': 'successfull'})
         else:
             return render(request, 'users/index.html', {'alert_message': 'Şifreler Eşleşmedi', 'alertColor': 'dangerr'})
         # except:
@@ -119,8 +128,6 @@ def register(request):
 def logout(request):
     logoutUser(request)
     return render(request, 'users/index.html', {'alert_message': 'Başarılı', 'alertColor': 'successfull'})
-
-
 
 
 def password_change(request):
@@ -137,7 +144,6 @@ def password_change(request):
             else: return HttpResponse("Yeni Şifreler Eşleşmedi")
         else : return HttpResponse("Şifrenizi Hatalı Girdiniz")
     else: return HttpResponse("İlginç Bir Hata")
-
 
 
 class VerificationView(View):
