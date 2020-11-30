@@ -10,7 +10,7 @@ class University(models.Model):
 
     name = models.CharField(max_length=200)
     info = models.CharField(max_length=200, default="")
-    detailedInfo = models.CharField(max_length=800, default="")
+    # detailedInfo = models.CharField(max_length=800, default="")
 
     country = models.CharField(max_length=200, default="")
     city = models.CharField(max_length=200, default="")
