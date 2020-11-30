@@ -9,8 +9,8 @@
             <form class="mt-5" action="{% url 'blogs:createpost' %}" method="POST">
                 {% csrf_token %}
                 <div>
-                    <label for="textField">Post Your Thoughts</label>
-                    <textarea class="form-control" name="textField" id="textField" {% if not user.is_authenticated %} disabled  {% endif %} placeholder="What are you thinking? Share your thoughts" required></textarea>
+                    <label for="textField">Düşüncelerinizi Paylaşın</label>
+                    <textarea class="form-control" name="textField" id="textField" {% if not user.is_authenticated %} disabled  {% endif %} placeholder="Ne düşünüyorsun? Düşüncelerini Paylaş" required></textarea>
                 </div>
                 <div class="float-right mt-2">
                     <button type="submit" class="btn btn-primary ">Submit</button>

@@ -1,5 +1,161 @@
 {% extends "users/base.html" %}
+
+{% block CustomStyle %}
+<style>
+
+</style>
+{% endblock CustomStyle %}
+
+
 {% block content %}
-<p>event</div>
+<section class="text-center">
+    <div class="bootstrap_calendar">
+        <div class="container">
+            <header class="text-center my-3">
+                <h1 class="display-4">Akademik Takvim</h1>
+            </header>
+            <div class="calendar shadow bg-white p-5">
+                <div class="d-flex align-items-center"><i class="fa fa-calendar fa-3x mr-3"></i>
+                    <h2 class="month font-weight-bold mb-0 text-uppercase">Aralık 2020</h2>
+                </div>
+                <p class="font-italic text-muted mb-5">Üniversitelerin Programı</p>
+                <ol class="day-names list-unstyled">
+                    <li class="font-weight-bold text-uppercase">Pazartesi</li>
+                    <li class="font-weight-bold text-uppercase">Salı</li>
+                    <li class="font-weight-bold text-uppercase">Çarşamba</li>
+                    <li class="font-weight-bold text-uppercase">Perşembe</li>
+                    <li class="font-weight-bold text-uppercase">Cuma</li>
+                    <li class="font-weight-bold text-uppercase">Cumartesi</li>
+                    <li class="font-weight-bold text-uppercase">Pazar</li>
+                </ol>
+                <ol class="days list-unstyled">
+                    
+                    <li class="outside">
+                        <div class="date">30</div>
+                    </li>
+
+                    <li>
+                        <div class="date">1</div>
+                    </li>
+                    <li>
+                        <div class="date">2</div>
+                    </li>
+                    <li>
+                        <div class="date">3</div>
+                    </li>
+                    <li>
+                        <div class="date">4</div>
+                    </li>
+                    <li>
+                        <div class="date">5</div>
+                        <div class="event all-day begin span-2 bg-warning">Kayıt</div>
+
+                    </li>
+                    <li>
+                        <div class="date">6</div>
+                    </li>
+                    <li>
+                        <div class="date">7</div>
+                    </li>
+                    <li>
+                        <div class="date">8</div>
+                    </li>
+                    <li>
+                        <div class="date">9</div>
+                    </li>
+                    <li>
+                        <div class="date">10</div>
+                    </li>
+                    <li>
+                        <div class="date">11</div>
+                    </li>
+                    <li>
+                        <div class="date">12</div>
+                    </li>
+                    <li>
+                        <div class="date">13</div>
+                        <!-- <div class="event all-day begin span-2 bg-warning">Event Name</div> -->
+                    </li>
+                    <li>
+                        <div class="date">14</div>
+                    </li>
+                    <li>
+                        <div class="date">15</div>
+                        <div class="event all-day end bg-success">Konser</div>
+                        <div class="event all-day end bg-primary">Ders Programı</div>
+                    </li>
+                    <li>
+                        <div class="date">16</div>
+                    </li>
+                    <li>
+                        <div class="date">17</div>
+                    </li>
+                    <li>
+                        <div class="date">18</div>
+                        <div class="event bg-danger">Sempozyum</div>
+                    </li>
+                    <li>
+                        <div class="date">19</div>
+                    </li>
+                    <li>
+                        <div class="date">20</div>
+                    </li>
+                    <li>
+                        <div class="date">21</div>
+                        <div class="event bg-primary">Kayıt</div>
+                    </li>
+                    <li>
+                        <div class="date">22</div>
+                        <!-- <div class="event bg-info">Event with Longer Name</div> -->
+                    </li>
+                    <li>
+                        <div class="date">23</div>
+                    </li>
+                    <li>
+                        <div class="date">24</div>
+                    </li>
+                    <li>
+                        <div class="date">25</div>
+                    </li>
+                    <li>
+                        <div class="date">26</div>
+                    </li>
+                    <li>
+                        <div class="date">27</div>
+                    </li>
+                    <li>
+                        <div class="date">28</div>
+                    </li>
+                    <li>
+                        <div class="date">29</div>
+                    </li>
+                    <li>
+                        <div class="date">30</div>
+                    </li>
+                    <li>
+                        <div class="date">31</div>
+                    </li>
+                    <li class="outside">
+                        <div class="date">1</div>
+                    </li>
+                    <li class="outside">
+                        <div class="date">2</div>
+                    </li>
+                    <li class="outside">
+                        <div class="date">3</div>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
 
 {% endblock content %}
+
+
+
+{% block Customscript %}
+<script>
+
+</script>
+{% endblock Customscript %}

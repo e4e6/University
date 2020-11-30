@@ -37,6 +37,9 @@
                     <li class="nav-item"><a data-toggle="pill" id="navbutton_detail" href="#nav-detail-info" class="nav-link rounded-pill"><i class="fa fa-list-alt"></i>
                                 Detay Bilgiler
                             </a></li>
+                    <li class="nav-item"><a data-toggle="pill" id="navbutton_faculty" href="#nav-faculties-info" class="nav-link rounded-pill"><i class="fa fa-list-alt"></i>
+                                Fakülteler
+                            </a></li>
                     <li class="nav-item"><a data-toggle="pill" id="navbutton_department" href="#nav-departments-info" class="nav-link rounded-pill"><i class="fa fa-black-tie"></i>
                                 Bölümler
                              </a></li>
@@ -96,7 +99,7 @@
                                                 <i class="fa fa-question-circle"></i></label><input type="text" required class="form-control" /></div>
                                 </div>
                             </div> -->
-                            <button type="button" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm" onclick="changeNavBar(1)" > Next  </button>
+                            <button type="button" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm" onclick="changeNavBar(1)" > İleri  </button>
                         </form>
                     </div>
                     <div id="nav-detail-info" class="tab-pane fade">
@@ -108,55 +111,175 @@
                                       <input type="file" class="custom-file-input" id="inputGroupFile02">
                                       <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Fotoğraf Seç</label>
                                     </div>
-                                  </div>
+                                </div>
                                   
                             </div>
                             <div class="form-group">
-                                <label for="uniname" data-toggle="tooltip" title="Üniversite arama yerinde gözükecek">Kapak Fotoğrafı<i class="fa fa-question-circle"></i></label>
-                                <input type="text" name="uniname" placeholder="Arel Üniversitesi"  class="form-control" />
+                                <label for="uniname">Kapak Fotoğrafı</label>
+                                <div class="input-group mb-3">
+                                    <div class="custom-file">
+                                      <input type="file" class="custom-file-input" id="inputGroupFile02">
+                                      <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Fotoğraf Seç</label>
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="uniname">Uzun Açıklama</label>
                                 <textarea name="uniname" placeholder="Arel Üniversitesi"  class="form-control">
                                 </textarea>
                             </div>
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <div class="form-group"><label><span class="hidden-xs">Öğrenci Sayısı</span></label>
-                                        <div class="input-group"><input type="number" placeholder="" name class="form-control"  /></div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="form-group"><label><span class="hidden-xs">Uluslararası Öğrenci sayısı</span></label>
-                                        <div class="input-group"><input type="number" placeholder="" name class="form-control"  /></div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="form-group mb-4"><label data-toggle="tooltip" title="Devlet ya da Özel Üniversite">Üniversite Türü
-                                                <i class="fa fa-question-circle"></i></label>
-                                        <select class="form-control" id="exampleFormControlSelect1">
-                                            <option>Devlet</option>
-                                            <option>Özel</option>
-                                        </select>
-                                    </div>
+                            <div class="form-group">
+                                <label for="cardNumber">Web site</label>
+                                <div class="input-group">
+                                <input type="text" name="cardNumber" placeholder="Web sitesi" class="form-control" />
+                                    <div class="input-group-append">
+                                    <span class="input-group-text text-muted"><i class="fa fa-mouse-pointer mx-1"></i></span></div>
                                 </div>
                             </div>
-                            <button type="button" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm" onclick="changeNavBar(2)" > Next  </button>
+                            <div class="form-group">
+                                <label for="cardNumber">İnstagram</label>
+                                <div class="input-group">
+                                <input type="text" name="cardNumber" placeholder="İnstagram" class="form-control" />
+                                    <div class="input-group-append">
+                                    <span class="input-group-text text-muted"><i class="fa fa-instagram mx-1"></i></span></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="cardNumber">Facebook</label>
+                                <div class="input-group">
+                                <input type="text" name="cardNumber" placeholder="Facebook" class="form-control" />
+                                    <div class="input-group-append">
+                                    <span class="input-group-text text-muted"><i class="fa fa-facebook mx-1"></i></span></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="cardNumber">LinkedIn</label>
+                                <div class="input-group">
+                                <input type="text" name="cardNumber" placeholder="LinkedIn" class="form-control" />
+                                    <div class="input-group-append">
+                                    <span class="input-group-text text-muted"><i class="fa fa-linkedin mx-1"></i></span></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="cardNumber">Twitter</label>
+                                <div class="input-group">
+                                <input type="text" name="cardNumber" placeholder="Twitter" class="form-control" />
+                                    <div class="input-group-append">
+                                    <span class="input-group-text text-muted"><i class="fa fa-twitter mx-1"></i></span></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="cardNumber">Pinterest</label>
+                                <div class="input-group">
+                                <input type="text" name="cardNumber" placeholder="Pinterest" class="form-control" />
+                                    <div class="input-group-append">
+                                    <span class="input-group-text text-muted"><i class="fa fa-pinterest mx-1"></i></span></div>
+                                </div>
+                            </div>
+                            <button type="button" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm" onclick="changeNavBar(2)" > İleri  </button>
+                        </form>
+                    </div>
+                    <div id="nav-faculties-info" class="tab-pane fade">
+                        <form>
+                            <div style="margin-bottom: 80px;">
+                                <div class="row clearfix">
+                                    <div class="col-md-12 column">
+                                        <table class="table table-bordered table-hover" id="tab_logici">
+                                            <thead>
+                                                <tr >
+                                                    <th class="text-center">
+                                                        #
+                                                    </th>
+                                                    <th class="text-center">
+                                                        Fakülte
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr id='addr0'>
+                                                    <td class="text-center">
+                                                    1
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name='fname0' id='fname0' placeholder='Fakülte' class="form-control"/>
+                                                    </td>
+                                                </tr>
+                                                <tr id='addri1'></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <a id="add_rowi" class="btn btn-primary pull-left">Satır Ekle</a><a id='delete_rowi' class="pull-right btn btn-danger">Satır Sil</a>
+                            </div>
+                            <button type="button" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm" onclick="changeNavBar(3)" > İleri  </button>
                         </form>
                     </div>
                     <div id="nav-departments-info" class="tab-pane fade">
-                        <h6>Bank account details</h6>
-                        <dl><dt>Bank</dt>
-                            <dd> THE WORLD BANK</dd>
-                        </dl>
-                        <dl><dt>Account number</dt>
-                            <dd>7775877975</dd>
-                        </dl>
-                        <dl><dt>IBAN</dt>
-                            <dd>CZ7775877975656</dd>
-                        </dl>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </p>
+                        <form>
+                            <div style="margin-bottom: 80px;">
+                                <div class="row clearfix">
+                                    <div class="col-md-12 column">
+                                        <table class="table table-bordered table-hover" id="tab_logicj">
+                                            <thead>
+                                                <tr >
+                                                    <th class="text-center">
+                                                        #
+                                                    </th>
+                                                    <th class="text-center">
+                                                        Bölüm
+                                                    </th>
+                                                    <th class="text-center">
+                                                        Fakülte
+                                                    </th>
+                                                    <th class="text-center">
+                                                        Puan Türü
+                                                    </th>
+                                                    <th class="text-center">
+                                                        Minimum Puan
+                                                    </th>
+                                                    <th class="text-center">
+                                                        Minimum Sıralama
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr id='addr0'>
+                                                    <td class="text-center">
+                                                    1
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" placeholder='Bölüm' class="form-control"/>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control input-md" id="FacultiesSelect0">
+                                                            <option>Lütfen Fakülte Giriniz</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control input-md">
+                                                            <option>TYT</option>
+                                                            <option>YKS-AYT Sayısal</option>
+                                                            <option>YKS-AYT Eşit Ağırlık</option>
+                                                            <option>YKS-AYT Sözel</option>
+                                                            <option>YKS-AYT Dil</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" placeholder='Minimum Puan' class="form-control"/>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" placeholder='Minimum Sıralama' class="form-control"/>
+                                                    </td>
+                                                </tr>
+                                                <tr id='addrj1'></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <a id="add_rowj" class="btn btn-primary pull-left">Satır Ekle</a><a id='delete_rowj' class="pull-right btn btn-danger">Satır Sil</a>
+                            </div>
+                            <button type="button" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm" onclick="changeNavBar(4)" > Bitir  </button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -171,13 +294,61 @@
 
 {% block Customscript %}
     <script>
+        var optionsText = "<option>Lütfen Fakülte Giriniz</option>";
+        var i=1;
+        var j=1;
+
         function changeNavBar(number){
             if(number == 1){
                 document.getElementById('navbutton_detail').click();
             }
-            else{
+            else if(number == 2){
+                document.getElementById('navbutton_faculty').click();
+            }
+            else if(number == 3){
                 document.getElementById('navbutton_department').click();
+                optionsText = ""
+                for(let t = 0; t < i; t++) {
+                    var a = document.getElementById('fname'+t);
+                    optionsText += "<option>" + a.value + "</option>";
+                }
+                for(let t = 0; t < j; t++) {
+                    var selectFaculties = document.getElementById('FacultiesSelect' + t.toString());
+                    selectFaculties.innerHTML = optionsText;
+                }
             }
         }
+        $(document).ready(function(){
+            $("#add_rowi").click(function(){
+                $('#addri'+i).html("<td class='text-center'>"+ (i+1) +"</td><td><input name='fname"+i+"' id='fname"+i+"' type='text' placeholder='Fakülte' class='form-control input-md'  /> </td>");
+
+                $('#tab_logici').append('<tr id="addri'+(i+1)+'"></tr>');
+                i++; 
+            });
+            $("#delete_rowi").click(function(){
+                if(i>1){
+                    $("#addri"+(i-1)).html('');
+                    i--;
+                }
+	        });
+
+            $("#add_rowj").click(function(){
+                $('#addrj'+j).html("<td>"+ (j+1) +"</td><td><input type='text' placeholder='Bölüm' class='form-control input-md'/> </td>"+
+                "<td><select class='form-control input-md' id='FacultiesSelect"+j+"'>"+optionsText+"</select></td>"+
+                "<td><select class='form-control input-md'><option>TYT</option><option>YKS-AYT Sayısal</option><option>YKS-AYT Eşit Ağırlık</option><option>YKS-AYT Sözel</option><option>YKS-AYT Dil</option></select></td>"+
+                "<td><input type='text' placeholder='Minimum Puan' class='form-control input-md'></td>"+
+                "<td><input type='text' placeholder='Minimum Sıralama' class='form-control input-md'></td>");
+
+                $('#tab_logicj').append('<tr id="addrj'+(j+1)+'"></tr>');
+                j++; 
+            });
+            $("#delete_rowj").click(function(){
+                if(j>1){
+                    $("#addrj"+(j-1)).html('');
+                    j--;
+                }
+	        });
+
+        });
     </script>
 {% endblock Customscript %}

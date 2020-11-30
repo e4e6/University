@@ -28,7 +28,7 @@ BrandIcon {
 }
 
 body {
-  font-family: Courier,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif;
+  font-family: Helvetica Neue,Roboto,Arial,Noto Sans,Courier,sans-serif;
 }
 
 #coverPhoto {
