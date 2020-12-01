@@ -1,9 +1,9 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth import authenticate, logout as logoutUser, login as loginUser
-from django.utils import timezone
+#from django.utils import timezone
 from django.views.generic.base import View
 from .models import CustomUser, Subscribers
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
@@ -17,6 +17,11 @@ from .utils import token_generator
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.hashers import check_password
+from django.core.mail import EmailMultiAlternatives
+from django.core.mail import EmailMultiAlternatives    
+from django.http import HttpResponse
+from django.template.loader import get_template
+from django.contrib.auth.views import PasswordResetConfirmView
 
 User = get_user_model()
 
@@ -55,6 +60,9 @@ def kullanicisozlesmesi(request):
 def gizliliksozlesmesi(request):
     return render(request, 'users/gizliliksozlesmesi.html', {})
 
+def funcsignupcompleted(request):
+    return render(request, 'users/signupcompleted.html', {})
+
 def subscribe(request):
     if request.method == 'POST':
         email = request.POST['email']
@@ -79,8 +87,7 @@ def login(request):
         if user is not None:
             # A backend authenticated the credentials
             loginUser(request, user)
-            return render(request, 'users/index.html', {'alert_message': 'Başarılı', 'alertColor': 'successfull'})
-            
+            return render(request, 'users/index.html', {'alert_message': 'Başarılı', 'alertColor': 'successfull'})            
         else:
             user2 = User.objects.filter(username=request.POST['username'])
             if user2.count == 0:
@@ -109,13 +116,39 @@ def register(request):
             activate_url = 'http://'+domain+link
             email_subject = "hesabınızı aktifleştirin"
             email_body = user.username + '   linke tıklayınız\n' + activate_url
-            emailsend = EmailMessage(
-                email_subject,
-                email_body,
-                'portaluniversite@gmail.com',
-                [user.email]
-            )
-            emailsend.send(fail_silently=False)
+            # emailsend = EmailMessage(
+            #     email_subject,
+            #     email_body,
+            #     'portaluniversite@gmail.com',
+            #     [user.email]
+            # )
+            # emailsend.send(fail_silently=False)
+
+            # text = get_template('email_template.txt')
+            # html = get_template('email_template.html')
+            # data = {'templating variable': data_var}
+            # # If Client cant receive html mails, it will receive the text
+            # # only version. 
+            # # Render the template with the data
+            # content_txt = text.render(data)
+            # content_html = html.render(data)
+
+            # # Send mail
+            # msg = EmailMultiAlternatives(email_subject, content_text, from_email, [to])
+            # msg.attach_alternative(content_html, "text/html")
+            # msg.send()
+
+
+            subject, from_email, toperson = email_subject , 'portaluniversite@gmail.com', user.email
+            text = get_template('users/signup_send_mail_txt.html')
+            html = get_template('users/signup_send_mail_html.html')
+            data = {'email_body': email_body ,'username': request.POST['username'] , 'activate_url':activate_url}
+            text_content = text.render(data)
+            html_content = html.render(data)
+            msg = EmailMultiAlternatives(subject, text_content, from_email, [toperson])
+            msg.attach_alternative(html_content, "text/html")
+            msg.send()
+            
             return render(request, 'users/index.html', {'alert_message': 'Başarılı, Adresinize Aktivasyon Maili gönderilmiştir', 'alertColor': 'successfull'})
         else:
             return render(request, 'users/index.html', {'alert_message': 'Şifreler Eşleşmedi', 'alertColor': 'dangerr'})
@@ -160,8 +193,21 @@ class VerificationView(View):
             user.save()
             #login(request, user)
             messages.success(request, ('hesabınız oluşturuldu'))
-            return redirect('users:index')
+            return redirect('users:activated')
         else:
             messages.warning(
                 request, ('doğrulama linki geçersiz, bir ihtimal daha önce kullanıldı'))
             return redirect('users:index')
+
+
+def password_reset2(request):
+    if request.method == 'POST':
+        #PasswordResetConfirmView.get_user()
+        current_user = request.user
+        if request.POST['password1'] == request.POST['password2'] :
+            current_user.set_password(request.POST['password1'])
+            current_user.save()
+            #update_session_auth_hash(request, current_user)
+            return redirect('users:password_reset_complete')
+        else: return HttpResponse("Yeni Şifreler Eşleşmedi")
+    else: return HttpResponse("İlginç Bir Hata")
