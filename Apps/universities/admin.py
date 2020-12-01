@@ -24,7 +24,7 @@ class FacultyAdmin(admin.ModelAdmin):
 
 class UniversityAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None,               {'fields': ['name', 'info']}),
+        (None,               {'fields': ['name', 'info', 'detailedInfo']}),
         ('Student Information',               {'fields': ['numberOfLocalStudents', 'numberOfForeignStudents', 'universityType']}),
         # ('Links',               {'fields': ['website_link', 'pinterest_link', 'twitter_link', 'instagram_link', 'linkedin_link', 'facebook_link']}),
         ('Links',               {'fields': ['website_link',]}),

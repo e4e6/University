@@ -10,7 +10,7 @@ class University(models.Model):
 
     name = models.CharField(max_length=200)
     info = models.CharField(max_length=200, default="")
-    # detailedInfo = models.CharField(max_length=800, default="")
+    detailedInfo = models.TextField(max_length=3200, default="")
 
     country = models.CharField(max_length=200, default="")
     city = models.CharField(max_length=200, default="")
@@ -22,8 +22,8 @@ class University(models.Model):
     # profile_photo_path = models.CharField(max_length=200, default="")
     # cover_photo_path = models.CharField(max_length=200, default="" )
 
-    profile_photo = models.ImageField(null=True, blank=True, upload_to=upload_to_func)
-    cover_photo = models.ImageField(null=True, blank=True, upload_to=upload_to_func)
+    profile_photo = models.ImageField(null=True, blank=True, upload_to=upload_to_func, default='images/default/logo.png')
+    cover_photo = models.ImageField(null=True, blank=True, upload_to=upload_to_func, default='images/default/cover.jpg')
     images = models.CharField(max_length=200, default="", blank=True, null=True)
 
 
@@ -48,6 +48,9 @@ class University(models.Model):
     def getwebsitelink(self):
         return 'http://' + self.website_link + '/'
 
+    class Meta:
+        verbose_name_plural = "universities"
+
 
 
     # def getprofilePhoto(self):
@@ -63,6 +66,8 @@ class Faculty(models.Model):
 
     def __str__(self):
         return self.name
+    class Meta:
+        verbose_name_plural = "faculties"
 
 
 class Department(models.Model):

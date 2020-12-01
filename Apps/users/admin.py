@@ -12,6 +12,14 @@ class CustomUserAdmin(UserAdmin):
     fieldsets = UserAdmin.fieldsets + (('Additional infos', {'fields': ('age','followingList', )}),)
     filter_horizontal = ('followingList',)
 
+class SubscribersAdmin(admin.ModelAdmin):
+    fieldsets = [
+        (None,               {'fields': ['email', 'createdTime', 'is_active']}),
+    ]
+    readonly_fields = ['createdTime']
+    list_display = ('email','createdTime','is_active')
+
+
 
 admin.site.register(CustomUser, CustomUserAdmin)
-admin.site.register(Subscribers)
+admin.site.register(Subscribers, SubscribersAdmin)
