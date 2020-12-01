@@ -4,7 +4,7 @@ from django.db import models
 class CustomUser(AbstractUser):
     age = models.PositiveIntegerField(null=True, blank=True)
 
-    followingList = models.ManyToManyField('self', related_name='followerList',symmetrical=False, null=True, blank=True)
+    followingList = models.ManyToManyField('self', related_name='followerList',symmetrical=False,  blank=True)
     def GetFollowingList(self):
         return "\n".join([p.username for p in self.followingList.all()])
 
