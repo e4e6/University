@@ -41,8 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Apps.users.apps.UsersConfig',
     'Apps.blogs.apps.BlogsConfig',
+    'Apps.calendars.apps.CalendarsConfig',
     'Apps.universities.apps.UniversitiesConfig',
     'Apps.apptercih',
+    'Apps.appmakales',
 ]
 
 MIDDLEWARE = [
@@ -111,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Istanbul'
 
 USE_I18N = True
 

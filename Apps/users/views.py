@@ -36,8 +36,6 @@ def universityList(request):
     return render(request, 'users/universityList.html', {})
 
 
-def eventList(request):
-    return render(request, 'users/eventList.html', {})
 
 
 def profile(request):

@@ -27,6 +27,8 @@ urlpatterns = [
     path('universities/', include('Apps.universities.urls')),
     path('', include('Apps.users.urls')),
     path('apptercih/',include('Apps.apptercih.urls')),
+    path('calendar/',include('Apps.calendars.urls')),
+    path('posts/',include('Apps.appmakales.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

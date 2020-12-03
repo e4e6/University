@@ -14,7 +14,6 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
     path('profileEdit/', views.profileEdit, name='profileEdit'),
     path('universities/', views.universityList, name='universityList'),
-    path('events/', views.eventList, name='eventList'),
     # path('password_change/', auth_views.PasswordChangeView.as_view(template_name='users/password_change.html', success_url=reverse_lazy('users:password_change_done'),),
     #     name='password_change'),
     path('password_change/',views.sayfasifredegis,name="password_change"),

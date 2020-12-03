@@ -95,9 +95,10 @@
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="{% url 'universities:index' %}" style="color: rgb(0,0,0);" data-bs-hover-animate="swing">Üniversiteler</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="{% url 'users:eventList' %}" style="color: rgb(0,0,0);" data-bs-hover-animate="swing">Etkinlikler</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="{% url 'calendars:index' %}" style="color: rgb(0,0,0);" data-bs-hover-animate="swing">Etkinlikler</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'apptercih:home' %}" style="color: rgb(0,0,0);" data-bs-hover-animate="swing">Puan Hesaplama</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'blogs:index' %}" style="color: rgb(0,0,0);" data-bs-hover-animate="swing">Rehber Yazıları</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'appmakales:makale_home' %}" style="color: rgb(0,0,0);" data-bs-hover-animate="swing">Makale Yazıları</a></li>
                     <li class="nav-item"><a class="nav-link" href="#" style="color: rgb(0,0,0);" data-bs-hover-animate="swing">Akademi</a></li>
                 </ul>
                 {% if not user.is_authenticated %}

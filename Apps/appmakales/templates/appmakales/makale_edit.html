@@ -1,0 +1,8 @@
+{% extends 'appmakales/base.html' %}
+{% block content_appmakales %}
+<h1>Makale Düzenle</h1>
+<form action="" method="post">{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Update">
+</form>
+{% endblock content_appmakales %}
