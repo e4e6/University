@@ -17,7 +17,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.2.0/aos.css">
     <link rel="stylesheet" href="{% static 'assets/css/style.css'%}">
     <link rel="stylesheet" href="{% static 'assets/css/Bootstrap-Calendar.css'%}">
-    <script data-ad-client="ca-pub-3994522688041075" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <link rel="icon" href="{% static 'assets/favicon.ico' %}" type="image/x-icon">
+
+    <!-- <script data-ad-client="ca-pub-3994522688041075" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
 
     <style>
         #snackbar1 {
@@ -116,7 +118,8 @@
                                 <a class="btn" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false"><i class="fa fa-navicon" style="margin-left: 50px;padding-right: 25px;padding-left: 0px;font-size: 30px;"></i></a>
                                 <div class="dropdown-menu dropdown-menu-lg-right">
                                     <a href="{% url 'users:profile' %}" class="dropdown-item">Profile</a>
-                                    <a href="{% url 'users:profileEdit' %}" class="dropdown-item">Settings</a>
+                                    <a href="{% url 'users:password_change' %}" class="dropdown-item">Settings</a>
+                                    <!-- <a href="{% url 'users:profileEdit' %}" class="dropdown-item">Settings</a> -->
                                     <a href="{% url 'users:logout' %}" class="dropdown-item">Logout</a>
                                 </div>
                             </div>

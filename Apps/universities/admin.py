@@ -1,42 +1,44 @@
 from django.contrib import admin
-from .models import University, Faculty, Department
+from .models import University, Faculty, Campus, Privilige, Department
 
-# Register your models here.
-
-class FacultyInline(admin.StackedInline):
-    model = Faculty
-    extra = 1
-
-class DepartmentInline(admin.StackedInline):
-    model = Department
-    extra = 1
 
 class DepartmentAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None,               {'fields': ['name', 'faculty']}),
+        (None,               {'fields': ['name', 'departmentType',]}),
+        ('Points',               {'fields': ['puanType','minimumPuan','minimumRanking',]}),
+    ]
+
+class PriviligeAdmin(admin.ModelAdmin):
+    fieldsets = [
+        (None,               {'fields': ['name']}),
+    ]
+
+class CampusAdmin(admin.ModelAdmin):
+    fieldsets = [
+        (None,               {'fields': ['name']}),
     ]
 
 class FacultyAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None,               {'fields': ['name', 'university']}),
+        (None,               {'fields': ['name','departmentList']}),
     ]
-    inlines = [DepartmentInline]
+    filter_horizontal = ('departmentList',)
+
 
 class UniversityAdmin(admin.ModelAdmin):
     fieldsets = [
         (None,               {'fields': ['name', 'info', 'detailedInfo']}),
         ('Student Information',               {'fields': ['numberOfLocalStudents', 'numberOfForeignStudents', 'universityType']}),
-        # ('Links',               {'fields': ['website_link', 'pinterest_link', 'twitter_link', 'instagram_link', 'linkedin_link', 'facebook_link']}),
-        ('Links',               {'fields': ['website_link',]}),
+        ('Links',               {'fields': ['website_link', 'pinterest_link', 'twitter_link', 'instagram_link', 'linkedin_link', 'facebook_link']}),
         ('Photo Paths',               {'fields': ['profile_photo', 'cover_photo']}),
+        ('Lists',               {'fields': ['facultyList','priviligeList','campusList']}),
     ]
-    inlines = [FacultyInline]
+    filter_horizontal = ('facultyList','priviligeList', 'campusList')
+    # inlines = [FacultyInline]
 
 
 admin.site.register(University, UniversityAdmin)
 admin.site.register(Faculty, FacultyAdmin)
+admin.site.register(Campus, CampusAdmin)
+admin.site.register(Privilige, PriviligeAdmin)
 admin.site.register(Department, DepartmentAdmin)
-
-# admin.site.register(University, UniversityAdmin)
-# admin.site.register(Faculty, FacultyAdmin)
-# admin.site.register(Department, DepartmentAdmin)

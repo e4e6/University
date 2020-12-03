@@ -34,47 +34,48 @@
                     <li class="nav-item"><a data-toggle="pill" id="navbutton_general" href="#nav-general-info" class="nav-link active rounded-pill"><i class="fa fa-home"></i>
                                 Genel Bilgiler
                             </a></li>
-                    <li class="nav-item"><a data-toggle="pill" id="navbutton_detail" href="#nav-detail-info" class="nav-link rounded-pill"><i class="fa fa-list-alt"></i>
+                    <li class="nav-item"><a data-toggle="pill" id="navbutton_detail" href="#nav-detail-info" class="nav-link rounded-pill disabled"><i class="fa fa-list-alt"></i>
                                 Detay Bilgiler
                             </a></li>
-                    <li class="nav-item"><a data-toggle="pill" id="navbutton_faculty" href="#nav-faculties-info" class="nav-link rounded-pill"><i class="fa fa-list-alt"></i>
+                    <li class="nav-item"><a data-toggle="pill" id="navbutton_faculty" href="#nav-faculties-info" class="nav-link rounded-pill disabled"><i class="fa fa-list-alt"></i>
                                 Fakülteler
                             </a></li>
-                    <li class="nav-item"><a data-toggle="pill" id="navbutton_department" href="#nav-departments-info" class="nav-link rounded-pill"><i class="fa fa-black-tie"></i>
+                    <li class="nav-item"><a data-toggle="pill" id="navbutton_department" href="#nav-departments-info" class="nav-link rounded-pill disabled"><i class="fa fa-black-tie"></i>
                                 Bölümler
                              </a></li>
                 </ul>
                 <div class="tab-content">
                     <div id="nav-general-info" class="tab-pane fade show active">
-                        <form>
+                        <form onsubmit="return false">
                             <div class="form-group">
-                                <label for="uniname">Üniversite İsmi</label>
-                                <input type="text" name="uniname" placeholder="Arel Üniversitesi"  class="form-control  form-control-lg" />
+                                <label for="university_name">Üniversite İsmi</label>
+                                <input type="text" id="university_name" class="form-control form-control-lg" required/>
                             </div>
                             <div class="form-group">
-                                <label for="uniname" data-toggle="tooltip" title="Üniversite arama yerinde gözükecek">Kısa Açıklama <i class="fa fa-question-circle"></i></label>
-                                <input type="text" name="uniname" placeholder="Arel Üniversitesi"  class="form-control" />
+                                <label for="short_description" data-toggle="tooltip" title="Üniversite arama yerinde gözükecek">Kısa Açıklama <i class="fa fa-question-circle"></i></label>
+                                <input type="text" id="short_description" class="form-control" required/>
                             </div>
                             <div class="form-group">
-                                <label for="uniname">Uzun Açıklama</label>
-                                <textarea name="uniname" placeholder="Arel Üniversitesi"  class="form-control">
-                                </textarea>
+                                <label for="long_description">Uzun Açıklama</label>
+                                <textarea id="long_description" class="form-control" required></textarea>
                             </div>
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="form-group"><label><span class="hidden-xs">Öğrenci Sayısı</span></label>
-                                        <div class="input-group"><input type="number" placeholder="" name class="form-control"  /></div>
+                                        <div class="input-group">
+                                            <input type="number" placeholder="" id="student_count" class="form-control" required />
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group"><label><span class="hidden-xs">Uluslararası Öğrenci sayısı</span></label>
-                                        <div class="input-group"><input type="number" placeholder="" name class="form-control"  /></div>
+                                        <div class="input-group"><input type="number" placeholder="" id="inter_student_count" class="form-control" required /></div>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group mb-4"><label data-toggle="tooltip" title="Devlet ya da Özel Üniversite">Üniversite Türü
                                                 <i class="fa fa-question-circle"></i></label>
-                                        <select class="form-control" id="exampleFormControlSelect1">
+                                        <select class="form-control" id="uni_type">
                                             <option>Devlet</option>
                                             <option>Özel</option>
                                         </select>
@@ -99,88 +100,83 @@
                                                 <i class="fa fa-question-circle"></i></label><input type="text" required class="form-control" /></div>
                                 </div>
                             </div> -->
-                            <button type="button" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm" onclick="changeNavBar(1)" > İleri  </button>
+                            <button type="submit" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm" onclick="changeNavBar(1)" > İleri  </button>
                         </form>
                     </div>
                     <div id="nav-detail-info" class="tab-pane fade">
-                        <form>
+                        <form onsubmit="return false">
                             <div class="form-group">
                                 <label for="uniname">Profil Fotoğrafı</label>
                                 <div class="input-group mb-3">
                                     <div class="custom-file">
-                                      <input type="file" class="custom-file-input" id="inputGroupFile02">
-                                      <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Fotoğraf Seç</label>
+                                        <input type="file" class="custom-file-input" id="profil_photo" accept="image/png, image/jpeg" required>
+                                        <label class="custom-file-label" for="profil_photo">Fotoğraf Seç</label>
                                     </div>
-                                </div>
-                                  
+                                </div> 
                             </div>
                             <div class="form-group">
                                 <label for="uniname">Kapak Fotoğrafı</label>
                                 <div class="input-group mb-3">
                                     <div class="custom-file">
-                                      <input type="file" class="custom-file-input" id="inputGroupFile02">
-                                      <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Fotoğraf Seç</label>
+                                      <input type="file" class="custom-file-input" id="cover_photo" accept="image/png, image/jpeg" required>
+                                      <label class="custom-file-label" for="cover_photo">Fotoğraf Seç</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="uniname">Uzun Açıklama</label>
-                                <textarea name="uniname" placeholder="Arel Üniversitesi"  class="form-control">
-                                </textarea>
-                            </div>
-                            <div class="form-group">
                                 <label for="cardNumber">Web site</label>
                                 <div class="input-group">
-                                <input type="text" name="cardNumber" placeholder="Web sitesi" class="form-control" />
+                                    <input type="text" id="website" class="form-control" required/>
                                     <div class="input-group-append">
-                                    <span class="input-group-text text-muted"><i class="fa fa-mouse-pointer mx-1"></i></span></div>
+                                        <span class="input-group-text text-muted"><i class="fa fa-mouse-pointer mx-1" style="width: 15px;"></i></span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="cardNumber">İnstagram</label>
                                 <div class="input-group">
-                                <input type="text" name="cardNumber" placeholder="İnstagram" class="form-control" />
+                                <input type="text" id="instagram" class="form-control" required/>
                                     <div class="input-group-append">
-                                    <span class="input-group-text text-muted"><i class="fa fa-instagram mx-1"></i></span></div>
+                                    <span class="input-group-text text-muted"><i class="fa fa-instagram mx-1" style="width: 15px;"></i></span></div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="cardNumber">Facebook</label>
                                 <div class="input-group">
-                                <input type="text" name="cardNumber" placeholder="Facebook" class="form-control" />
+                                <input type="text" id="facebook" class="form-control" required/>
                                     <div class="input-group-append">
-                                    <span class="input-group-text text-muted"><i class="fa fa-facebook mx-1"></i></span></div>
+                                    <span class="input-group-text text-muted"><i class="fa fa-facebook mx-1" style="width: 15px;"></i></span></div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="cardNumber">LinkedIn</label>
                                 <div class="input-group">
-                                <input type="text" name="cardNumber" placeholder="LinkedIn" class="form-control" />
+                                <input type="text" id="linkedin" class="form-control" required/>
                                     <div class="input-group-append">
-                                    <span class="input-group-text text-muted"><i class="fa fa-linkedin mx-1"></i></span></div>
+                                    <span class="input-group-text text-muted"><i class="fa fa-linkedin mx-1" style="width: 15px;"></i></span></div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="cardNumber">Twitter</label>
                                 <div class="input-group">
-                                <input type="text" name="cardNumber" placeholder="Twitter" class="form-control" />
+                                <input type="text" id="twitter" class="form-control" required/>
                                     <div class="input-group-append">
-                                    <span class="input-group-text text-muted"><i class="fa fa-twitter mx-1"></i></span></div>
+                                    <span class="input-group-text text-muted"><i class="fa fa-twitter mx-1" style="width: 15px;"></i></span></div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="cardNumber">Pinterest</label>
                                 <div class="input-group">
-                                <input type="text" name="cardNumber" placeholder="Pinterest" class="form-control" />
+                                <input type="text" id="pinterest" class="form-control" required/>
                                     <div class="input-group-append">
                                     <span class="input-group-text text-muted"><i class="fa fa-pinterest mx-1"></i></span></div>
                                 </div>
                             </div>
-                            <button type="button" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm" onclick="changeNavBar(2)" > İleri  </button>
+                            <button type="submit" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm" onclick="changeNavBar(2)" > İleri  </button>
                         </form>
                     </div>
                     <div id="nav-faculties-info" class="tab-pane fade">
-                        <form>
+                        <form onsubmit="return false">
                             <div style="margin-bottom: 80px;">
                                 <div class="row clearfix">
                                     <div class="col-md-12 column">
@@ -201,7 +197,7 @@
                                                     1
                                                     </td>
                                                     <td>
-                                                        <input type="text" name='fname0' id='fname0' placeholder='Fakülte' class="form-control"/>
+                                                        <input type="text" name='fname0' id='fname0' placeholder='Fakülte' class="form-control" required/>
                                                     </td>
                                                 </tr>
                                                 <tr id='addri1'></tr>
@@ -211,11 +207,11 @@
                                 </div>
                                 <a id="add_rowi" class="btn btn-primary pull-left">Satır Ekle</a><a id='delete_rowi' class="pull-right btn btn-danger">Satır Sil</a>
                             </div>
-                            <button type="button" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm" onclick="changeNavBar(3)" > İleri  </button>
+                            <button type="submit" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm" onclick="changeNavBar(3)" > İleri  </button>
                         </form>
                     </div>
                     <div id="nav-departments-info" class="tab-pane fade">
-                        <form>
+                        <form onsubmit="return false">
                             <div style="margin-bottom: 80px;">
                                 <div class="row clearfix">
                                     <div class="col-md-12 column">
@@ -248,15 +244,15 @@
                                                     1
                                                     </td>
                                                     <td>
-                                                        <input type="text" placeholder='Bölüm' class="form-control"/>
+                                                        <input type="text" id="department0" placeholder='Bölüm' class="form-control" required/>
                                                     </td>
                                                     <td>
-                                                        <select class="form-control input-md" id="FacultiesSelect0">
+                                                        <select class="form-control input-md" id="departmentFaculty0">
                                                             <option>Lütfen Fakülte Giriniz</option>
                                                         </select>
                                                     </td>
                                                     <td>
-                                                        <select class="form-control input-md">
+                                                        <select class="form-control input-md" id="departmentType0">
                                                             <option>TYT</option>
                                                             <option>YKS-AYT Sayısal</option>
                                                             <option>YKS-AYT Eşit Ağırlık</option>
@@ -265,10 +261,10 @@
                                                         </select>
                                                     </td>
                                                     <td>
-                                                        <input type="text" placeholder='Minimum Puan' class="form-control"/>
+                                                        <input type="text" placeholder='Minimum Puan' class="form-control" id="departmentPoint0" required/>
                                                     </td>
                                                     <td>
-                                                        <input type="text" placeholder='Minimum Sıralama' class="form-control"/>
+                                                        <input type="text" placeholder='Minimum Sıralama' class="form-control" id="departmentRank0" required/>
                                                     </td>
                                                 </tr>
                                                 <tr id='addrj1'></tr>
@@ -278,7 +274,8 @@
                                 </div>
                                 <a id="add_rowj" class="btn btn-primary pull-left">Satır Ekle</a><a id='delete_rowj' class="pull-right btn btn-danger">Satır Sil</a>
                             </div>
-                            <button type="button" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm" onclick="changeNavBar(4)" > Bitir  </button>
+                            <button type="submit" id="formSender" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm" onclick="changeNavBar(4)" >
+                                <span class="spinner-border spinner-border-sm" id="formSenderSpinner" role="status" aria-hidden="true" hidden></span>  Bitir  </button>
                         </form>
                     </div>
                 </div>
@@ -300,27 +297,175 @@
 
         function changeNavBar(number){
             if(number == 1){
-                document.getElementById('navbutton_detail').click();
+
+                if(document.getElementById('university_name').value != "" 
+                    && document.getElementById('short_description').value != ""
+                    && document.getElementById('long_description').value != ""
+                    && document.getElementById('student_count').value != ""
+                    && document.getElementById('inter_student_count').value != "")
+                {
+                    var element = document.getElementById('navbutton_detail');
+                    element.classList.remove("disabled");
+                    element.click();
+                }
+
             }
             else if(number == 2){
-                document.getElementById('navbutton_faculty').click();
+
+                if(document.getElementById('profil_photo').value != "" 
+                    && document.getElementById('cover_photo').value != ""
+                    && document.getElementById('website').value != ""
+                    && document.getElementById('instagram').value != ""
+                    && document.getElementById('facebook').value != ""
+                    && document.getElementById('linkedin').value != ""
+                    && document.getElementById('twitter').value != ""
+                    && document.getElementById('pinterest').value != ""
+                    )
+                {
+                    var element = document.getElementById('navbutton_faculty');
+                    element.classList.remove("disabled");
+                    element.click();
+                }
             }
             else if(number == 3){
-                document.getElementById('navbutton_department').click();
-                optionsText = ""
+
+                var cannotPass = false;
+
                 for(let t = 0; t < i; t++) {
                     var a = document.getElementById('fname'+t);
-                    optionsText += "<option>" + a.value + "</option>";
+                    if(a.value == ""){
+                        cannotPass = true;
+                        break;
+                    }
+
                 }
+
+                if(!cannotPass){
+                    var element = document.getElementById('navbutton_department');
+                    element.classList.remove("disabled");
+                    element.click();
+                    optionsText = ""
+                    for(let t = 0; t < i; t++) {
+                        var a = document.getElementById('fname'+t);
+                        optionsText += "<option>" + a.value + "</option>";
+                    }
+                    if(optionsText != ""){
+                        for(let t = 0; t < j; t++) {
+                            var selectFaculties = document.getElementById('departmentFaculty' + t.toString());
+                            selectFaculties.innerHTML = optionsText;
+                        }
+                    }
+                }
+            }
+            else{
+                var cannotPass = false;
                 for(let t = 0; t < j; t++) {
-                    var selectFaculties = document.getElementById('FacultiesSelect' + t.toString());
-                    selectFaculties.innerHTML = optionsText;
+                    var selectFaculties = document.getElementById('departmentFaculty' + t.toString());
+                    if(selectFaculties.value == ""){
+                        cannotPass = true;
+                    }
+                }
+
+                if(!cannotPass){
+                    var formSender = document.getElementById('formSender');
+                    var formSenderSpinner = document.getElementById('formSenderSpinner');
+                    formSender.disabled = true;
+                    formSenderSpinner.hidden = false;
+
+                    formdata = new FormData();
+                    var profil_photo = $('#profil_photo').get(0).files[0];
+                    var cover_photo = $('#cover_photo').get(0).files[0];
+
+                    var faculties = []
+                    for(let t = 0; t < i; t++) {
+                        var a = document.getElementById('fname'+t);
+                        if(a.value != "")
+                            faculties.push(a.value);
+                    }
+                    
+                    var departments = []
+                    for(let t = 0; t < j; t++) {
+                        var department = document.getElementById('department' + t.toString());
+                        var departmentFaculty = document.getElementById('departmentFaculty' + t.toString());
+                        var departmentType = document.getElementById('departmentType' + t.toString());
+                        var departmentPoint = document.getElementById('departmentPoint' + t.toString());
+                        var departmentRank = document.getElementById('departmentRank' + t.toString());
+                        if(department != "" && departmentPoint !="" && departmentRank != ""){
+                            singleDepartment = 
+                            {
+                                'department_name': department.value,
+                                'faculty_name': departmentFaculty.value,
+                                'department_type': departmentType.value,
+                                'department_point': departmentPoint.value,
+                                'department_rank': departmentRank.value
+                            };
+                            departments.push(singleDepartment)
+                        }
+                    }
+                    console.log(departments);
+
+                    formdata.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+                    formdata.append('university_name', document.getElementById('university_name').value);
+                    formdata.append('short_description', document.getElementById('short_description').value);
+                    formdata.append('long_description', document.getElementById('long_description').value);
+                    formdata.append('student_count', document.getElementById('student_count').value);
+                    formdata.append('inter_student_count', document.getElementById('inter_student_count').value);
+                    formdata.append('uni_type', document.getElementById('uni_type').value);
+
+                    formdata.append("profil_photo", profil_photo);
+                    formdata.append("cover_photo", cover_photo);
+                    formdata.append('website', document.getElementById('website').value);
+                    formdata.append('instagram', document.getElementById('instagram').value);
+                    formdata.append('facebook', document.getElementById('facebook').value);
+                    formdata.append('linkedin', document.getElementById('linkedin').value);
+                    formdata.append('twitter', document.getElementById('twitter').value);
+                    formdata.append('pinterest', document.getElementById('pinterest').value);
+
+                    formdata.append('faculties', faculties);
+                    formdata.append('departments', JSON.stringify(departments));
+                    console.log(formdata);
+
+                    $.ajax({
+                        type        : 'POST',
+                        url         : "{% url 'universities:submitcreateUniversity' %}",
+                        //enctype     : "multipart/form-data",   //it is done inside jquery
+                        data        : formdata,
+                        cache       : false,
+                        contentType : false,
+                        processData : false,
+                        success : function(response) {
+                            // console.log('success');
+                            //$('#profile_picture').html(data.)
+                            var x = document.getElementById("snackbar1");
+                            x.className = "show makegreen";
+                            text = response['alert_message'];
+                            x.innerHTML = "<b>"+ text +"</b>"
+                            setTimeout(function(){ x.className = x.className.replace("show makegreen", "makegreen"); }, 3000);
+                        },
+                        error: function(response) {
+                            // console.log('image-fail');
+                            var x = document.getElementById("snackbar1");
+                            x.className = "show makered";
+                            text = response['alert_message'];
+                            x.innerHTML = "<b>"+ text +"</b>"
+                            setTimeout(function(){ x.className = x.className.replace("show makered", "makered"); }, 3000);
+                        },
+                        complete: function(response) {
+                            formSender.disabled = false;
+                            formSenderSpinner.hidden = true;
+                            setTimeout(function(){ location.reload(); }, 2000);
+                        }
+                    });
                 }
             }
         }
+    </script>
+
+    <!-- Fakülte ve Bölümlere yeni satır eklemek için -->
+    <script>
         $(document).ready(function(){
             $("#add_rowi").click(function(){
-                $('#addri'+i).html("<td class='text-center'>"+ (i+1) +"</td><td><input name='fname"+i+"' id='fname"+i+"' type='text' placeholder='Fakülte' class='form-control input-md'  /> </td>");
+                $('#addri'+i).html("<td class='text-center'>"+ (i+1) +"</td><td><input name='fname"+i+"' id='fname"+i+"' type='text' placeholder='Fakülte' class='form-control input-md' required /> </td>");
 
                 $('#tab_logici').append('<tr id="addri'+(i+1)+'"></tr>');
                 i++; 
@@ -333,11 +478,11 @@
 	        });
 
             $("#add_rowj").click(function(){
-                $('#addrj'+j).html("<td>"+ (j+1) +"</td><td><input type='text' placeholder='Bölüm' class='form-control input-md'/> </td>"+
-                "<td><select class='form-control input-md' id='FacultiesSelect"+j+"'>"+optionsText+"</select></td>"+
-                "<td><select class='form-control input-md'><option>TYT</option><option>YKS-AYT Sayısal</option><option>YKS-AYT Eşit Ağırlık</option><option>YKS-AYT Sözel</option><option>YKS-AYT Dil</option></select></td>"+
-                "<td><input type='text' placeholder='Minimum Puan' class='form-control input-md'></td>"+
-                "<td><input type='text' placeholder='Minimum Sıralama' class='form-control input-md'></td>");
+                $('#addrj'+j).html("<td>"+ (j+1) +"</td><td><input type='text' placeholder='Bölüm' class='form-control input-md' id='department"+j+"' required/> </td>"+
+                "<td><select class='form-control input-md' id='departmentFaculty"+j+"'>"+optionsText+"</select></td>"+
+                "<td><select class='form-control input-md' id='departmentType"+j+"'><option>TYT</option><option>YKS-AYT Sayısal</option><option>YKS-AYT Eşit Ağırlık</option><option>YKS-AYT Sözel</option><option>YKS-AYT Dil</option></select></td>"+
+                "<td><input type='text' placeholder='Minimum Puan' class='form-control input-md' id='departmentPoint"+j+"' required></td>"+
+                "<td><input type='text' placeholder='Minimum Sıralama' class='form-control input-md' id='departmentRank"+j+"' required></td>");
 
                 $('#tab_logicj').append('<tr id="addrj'+(j+1)+'"></tr>');
                 j++; 
@@ -349,6 +494,14 @@
                 }
 	        });
 
+        });
+    </script>
+
+    <!-- Fotoğraf seçildiğinde ismin çıkması için -->
+    <script>
+        $(".custom-file-input").on("change", function() {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
         });
     </script>
 {% endblock Customscript %}

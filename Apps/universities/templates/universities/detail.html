@@ -1,6 +1,11 @@
 {% extends "users/base.html" %}
-{% block content %}
 {% load static %}
+
+{% block customStyle %}
+
+{% endblock customStyle %}
+
+{% block content %}
 
     <section style="background: url({{university.cover_photo.url}}) center / contain repeat-x, #bababa;width: 100%;margin-top: 55px;position: relative;z-index: -1;min-height: 100vh;">
         <section style="width: 100%;height: 100%;background: #0500ff;opacity: 0.50; min-height: 100vh;"></section>
@@ -8,10 +13,16 @@
     </section>
     <section style="width: 95%;background: #ffffff;border-radius: 10px;margin-left: auto;margin-right: auto; margin-top: -400px; box-shadow: 0px 0px 20px;text-align: center;margin-bottom: 30px; padding-bottom: 30px;">
         <div style="text-align: right;margin-right: 20px;font-size: 40px;color: rgb(3,94,184);">
-            <div><i class="fa fa-pinterest-square" data-bs-hover-animate="pulse" style="color: rgb(223,0,25);" title="pinterest"></i><i class="fa fa-twitter-square" data-bs-hover-animate="pulse" style="margin-right: 7px;margin-left: 7px;color: rgb(0,224,255);"
-                    title="twitter"></i><i class="fa fa-instagram" data-bs-hover-animate="pulse" style="color: #000000;" title="instagram"></i><i class="fa fa-linkedin-square" data-bs-hover-animate="pulse" style="color: rgb(0,123,182);margin-right: 7px;margin-left: 7px;"
-                    title="linkedin"></i><i class="fa fa-facebook-square" data-bs-hover-animate="pulse" title="facebook"></i></div>
-            <div style="font-size: 25px;text-align: right;color: rgb(0,0,0);"><a data-bs-hover-animate="pulse" class="websiteLink" href="{{university.getwebsitelink}}" style="font-size: 20px;color: rgb(0,0,0);text-align: right;">{{university.website_link}}</a></div>
+            <div>
+                <a href="{{university.pinterest_link}}"><i class="fa fa-pinterest-square" data-bs-hover-animate="pulse" style="color: rgb(223,0,25);" title="pinterest"></i></a>
+                <a href="{{university.twitter_link}}"><i class="fa fa-twitter-square" data-bs-hover-animate="pulse" style="color: rgb(0,224,255);" title="twitter"></i></a>
+                <a href="{{university.instagram_link}}"><i class="fa fa-instagram" data-bs-hover-animate="pulse" style="color: #000000;" title="instagram"></i></a>
+                <a href="{{university.linkedin_link}}"><i class="fa fa-linkedin-square" data-bs-hover-animate="pulse" style="color: rgb(0,123,182);" title="linkedin"></i></a>
+                <a href="{{university.facebook_link}}"><i class="fa fa-facebook-square" data-bs-hover-animate="pulse" title="facebook"></i></a>
+            </div>
+            <div style="font-size: 25px;text-align: right;color: rgb(0,0,0);">
+                <a data-bs-hover-animate="pulse" class="websiteLink" href="{{university.getwebsitelink}}" style="font-size: 20px;color: rgb(0,0,0);text-align: right;">{{university.website_link}}</a>
+            </div>
         </div>
         <div><img class="d-inline-block" style="background: url({{university.profile_photo.url }}) center / cover no-repeat, #ffffff;min-width: 80px;min-height: 80px;width: 240px;height: 240px;margin-top: -200px;border-radius: 136px;">
             <h1 style="margin-top: 20px;">{{university.name}}</h1>
@@ -33,11 +44,9 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <p style="margin-bottom: 0px;"><br>Bağışlar ve yardımlarla finanse edilen Robert Kolej’in ilk binası Hamlin Hall’un inşaatı 1871 yılında tamamlanmıştır. Bugün Güney Kampüs dediğimiz kampüsteki tüm tarihi binalar Birinci Dünya Savaşı'ndan önce inşa edilmiş
-                                ve inşalarında kampüste bulunan ocaktan çıkarılan mavi kireçtaşı kullanılmıştır.<br></p>
-                            <p style="margin-bottom: 0px;"><br>Mart 1971'de dönemin başkanı Dr. Everton, Robert Kolej'in üzerine herhangi bir kampüs üzerinde bağımsız bir üniversitenin kurulması için Türk hükümetini teşvik eden önergenin 26 Ocak 1971'de Yönetim Kurulu tarafından kabul
-                                edildiğini açıklamıştır. Çalışmalar 1971 yazında sonuçlandırılmıştır. Binaları, kütüphanesi, laboratuvarları, tüm imkanları ve personeliyle 118 dönümlük bugünün Güney Kampüsü 10 Eylül 1971'de tamamen Türk hükümetinin üzerine
-                                geçmiştir. Boğaziçi Üniversitesi, yüz yıldan fazla Robert Kolej'in kampüsü olarak kullanılan alana resmi olarak kurulmuştur.<br><br></p>
+                            <p>
+                                {{university.detailedInfo|linebreaks}}
+                            </p>
                         </div>
                     </div>
                     <div class="row" style="margin-top: 25px;">
@@ -140,14 +149,58 @@
                                     <div class="row" style="margin-top: 100px;">
                                         <div class="col-3">
                                           <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                            <a class="nav-link active" id="v-pills-prelisance-tab" data-toggle="pill" href="#v-pills-prelisance" role="tab"  aria-selected="true">Ön Lisans Programları</a>
-                                            <a class="nav-link" id="v-pills-lisance-tab" data-toggle="pill" href="#v-pills-lisance" role="tab" aria-selected="false">Linsans Programları</a>
-                                            <a class="nav-link" id="v-pills-postlisance-tab" data-toggle="pill" href="#v-pills-postlisance" role="tab" aria-selected="false">Lisansüstü Programları</a>
+                                            <a class="nav-link active" data-toggle="pill" href="#v-pills-prelisance" role="tab"  aria-selected="true">Ön Lisans Programları</a>
+                                            <a class="nav-link" data-toggle="pill" href="#v-pills-lisance" role="tab" aria-selected="false">Linsans Programları</a>
+                                            <a class="nav-link" data-toggle="pill" href="#v-pills-postlisance-tab" role="tab" aria-selected="false">Lisansüstü Programları</a>
                                           </div>
                                         </div>
                                         <div class="col-9">
                                           <div class="tab-content" id="v-pills-tabContent">
                                             <div class="tab-pane fade show active" id="v-pills-prelisance" role="tabpanel">
+                                                <table id="tablePreview" class="table table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Bölüm</th>
+                                                            <th>Puan Tipi</th>
+                                                            <th>Taban Puan</th>
+                                                            <th>Taban Sıralama</th>
+                                                            <th>Ücret</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {% for faculty in university.facultyList.all %}
+                                                            {% for department in faculty.departmentList.all %}
+                                                                <tr>
+                                                                    <td>{{department.name}}</td>
+                                                                    <td>{{department.puanType}}</td>
+                                                                    <td>{{department.minimumPuan}}</td>
+                                                                    <td>{{department.minimumRanking}}</td>
+                                                                    <td>-</td>
+                                                                </tr>
+                                                            {% endfor %}
+                                                        {% endfor %}
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="tab-pane fade" id="v-pills-lisance" role="tabpanel">
+                                                <div class="col">
+                                                    {% for faculty in university.facultyList.all %}
+                                                        <p>
+                                                            {{faculty.name}} Fakültesi
+                                                        </p>
+                                                    <hr>
+                                                        {% for department in faculty.departmentList.all %}
+                                                        <p>
+                                                            {{department.name}}
+                                                        </p>
+                                                        {% endfor %}
+                        
+                                                    {% endfor %}
+                        
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="v-pills-postlisance-tab" role="tabpanel">
                                                 <table id="tablePreview" class="table table-hover">
                                                     <thead>
                                                         <tr>
@@ -161,37 +214,31 @@
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <td>Mark</td>
-                                                            <td>Otto</td>
-                                                            <td>@mdo</td>
-                                                            <td>Mark</td>
-                                                            <td>Otto</td>
-                                                            <td>@mdo</td>
+                                                            <td>İşletme</td>
+                                                            <td>Türkçe</td>
+                                                            <td>YGS</td>
+                                                            <td>481.54</td>
+                                                            <td>152</td>
+                                                            <td>-</td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Jacob</td>
-                                                            <td>Thornton</td>
-                                                            <td>@fat</td>
-                                                            <td>Mark</td>
-                                                            <td>Otto</td>
-                                                            <td>@mdo</td>
+                                                            <td>İktisat</td>
+                                                            <td>Türkçe</td>
+                                                            <td>YGS - 4</td>
+                                                            <td>481.54</td>
+                                                            <td>152</td>
+                                                            <td>-</td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Larry</td>
-                                                            <td>the Bird</td>
-                                                            <td>@twitter</td>
-                                                            <td>Mark</td>
-                                                            <td>Otto</td>
-                                                            <td>@mdo</td>
+                                                            <td>Bilgisayar Mühendisliği</td>
+                                                            <td>Türkçe</td>
+                                                            <td>LYS</td>
+                                                            <td>481.54</td>
+                                                            <td>152</td>
+                                                            <td>-</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                            </div>
-                                            <div class="tab-pane fade" id="v-pills-lisance" role="tabpanel">
-as
-                                            </div>
-                                            <div class="tab-pane fade" id="v-pills-postlisance-tab" role="tabpanel">
-saas
                                             </div>
                                           </div>
                                         </div>
@@ -226,6 +273,7 @@ saas
 
 
 {% block Customscript %}
+
     <script>
         var last_clicked_id = "nav_1";  
         function navClick(new_clicked_id) {
@@ -234,8 +282,6 @@ saas
                 $("#" + last_clicked_id).addClass('inactiveTab');
                 $("#" + new_clicked_id).removeClass('inactiveTab');
                 $("#" + new_clicked_id).addClass('activeTab');
-
-
 
                 // For making content show up accordingly
 
@@ -251,4 +297,5 @@ saas
             }
         }
     </script>
+
 {% endblock Customscript %}

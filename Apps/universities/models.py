@@ -2,11 +2,56 @@ from django.db import models
 
 # Create your models here.
 
+class Privilige(models.Model): ## yemekhane kulüpler
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = "priviligies"
+
+
+class Campus(models.Model): ## kampüsler
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = "campuses"
+
+
+class Department(models.Model):
+    name = models.CharField(max_length=200)
+    departmentType = models.CharField(max_length=200, default="", blank=True, null=True)  ## Lisans mı yükske lisans mı önlisans
+    puanType = models.CharField(max_length=200, default="", blank=True, null=True)
+    minimumPuan =  models.CharField(max_length=200, default="", blank=True, null=True)
+    minimumRanking =  models.CharField(max_length=200, default="", blank=True, null=True)
+    educaitonLanguage = models.CharField(max_length=200, default="", blank=True, null=True)
+    theTimeofEducation = models.CharField(max_length=200, default="", blank=True, null=True) ## birinci öğretim ikinci öğretim
+    presentageofScholarhip = models.CharField(max_length=200, default="", blank=True, null=True) ## bursluluk oranı
+    tution = models.CharField(max_length=200, default="", blank=True, null=True) ## parası
+    years = models.CharField(max_length=200, default="", blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+
+class Faculty(models.Model):
+    name = models.CharField(max_length=200)
+    departmentList = models.ManyToManyField(Department, blank=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = "faculties"
+
 
 class University(models.Model):
 
     def upload_to_func(self,filename):
-        return "images/{}/{}".format(self.id, filename)
+        return "images/{}/{}".format(self.name, filename)
 
     name = models.CharField(max_length=200)
     info = models.CharField(max_length=200, default="")
@@ -26,18 +71,24 @@ class University(models.Model):
     cover_photo = models.ImageField(null=True, blank=True, upload_to=upload_to_func, default='images/default/cover.jpg')
     images = models.CharField(max_length=200, default="", blank=True, null=True)
 
-
-
-    website_link = models.CharField(max_length=200, default="")
-    pinterest_link = models.CharField(max_length=200, default="" , blank=True, null=True)
-    twitter_link = models.CharField(max_length=200, default="" , blank=True, null=True)
-    instagram_link = models.CharField(max_length=200, default="" , blank=True, null=True)
-    linkedin_link = models.CharField(max_length=200, default="" , blank=True, null=True)
-    facebook_link = models.CharField(max_length=200, default="" , blank=True, null=True)
-
+    website_link = models.CharField(max_length=200, default="#")
+    pinterest_link = models.CharField(max_length=200, default="https://tr.pinterest.com/" , blank=True, null=True)
+    twitter_link = models.CharField(max_length=200, default="https://twitter.com/" , blank=True, null=True)
+    instagram_link = models.CharField(max_length=200, default="https://www.instagram.com/" , blank=True, null=True)
+    linkedin_link = models.CharField(max_length=200, default="https://www.linkedin.com/" , blank=True, null=True)
+    facebook_link = models.CharField(max_length=200, default="https://www.facebook.com/" , blank=True, null=True)
 
     numberOfAcademicians= models.CharField(max_length=200, default="")
     location = models.CharField(max_length=200, default="")
+
+    facultyList = models.ManyToManyField(Faculty, blank=True)
+    priviligeList = models.ManyToManyField(Privilige, blank=True)
+    campusList = models.ManyToManyField(Campus, blank=True)
+
+    def GetFaculties(self):
+        return "\n".join([p.username for p in self.facultyList.all()])
+
+    facultyList.short_description = 'faculties'
 
     def __str__(self):
         return self.name
@@ -60,44 +111,4 @@ class University(models.Model):
     #     return '/static/assets/img/universities/' + str(self.id) + '/' + self.cover_photo_path
 
 
-class Faculty(models.Model):
-    name = models.CharField(max_length=200)
-    university = models.ForeignKey(University, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.name
-    class Meta:
-        verbose_name_plural = "faculties"
-
-
-class Department(models.Model):
-    name = models.CharField(max_length=200)
-    faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE)
-    departmentType = models.CharField(max_length=200, default="")  ## Lisans mı yükske lisans mı önlisans
-    puanType = models.CharField(max_length=200, default="")
-    minimumPuan =  models.CharField(max_length=200, default="")
-    minimumRanking =  models.CharField(max_length=200, default="")
-    educaitonLanguage = models.CharField(max_length=200, default="")
-    theTimeofEducation = models.CharField(max_length=200, default="") ## birinci öğretim ikinci öğretim
-    presentageofScholarhip = models.CharField(max_length=200, default="") ## bursluluk oranı
-    tution = models.CharField(max_length=200, default="") ## parası
-    years = models.CharField(max_length=200, default="") ## parası
-
-    def __str__(self):
-        return self.name
-
-
-
-class Privaligities(models.Model): ## yemekhane kulüpler
-    name = models.CharField(max_length=200)
-    university = models.ForeignKey(University, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.name
-
-class Campuses(models.Model): ## kampüsler
-    name = models.CharField(max_length=200)
-    university = models.ForeignKey(University, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.name

@@ -369,9 +369,9 @@
                 </div>
             </div>
             {% if user.is_superuser %}
-            <div class="col-1 align-middle" style="text-align: center;">
-                <a class="btn" href="{% url 'universities:createUniversity' %}" data-bs-hover-animate="pulse">
-                    <i class="fa fa-plus-circle d-xl-flex justify-content-xl-end" style="font-size: 50px;margin-top: 25px;color: #007bff;"></i>
+            <div class="col-1">
+                <a class="btn" href="{% url 'universities:createUniversity' %}" data-bs-hover-animate="pulse" style="height: 100%;">
+                    <i class="fa fa-plus-circle" style="font-size: 50px;color: #007bff;"></i>
                 </a>
             </div>
             {% endif %}
