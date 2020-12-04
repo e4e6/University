@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.utils import timezone
 
 class CustomUser(AbstractUser):
     age = models.PositiveIntegerField(null=True, blank=True)
@@ -18,7 +19,7 @@ class CustomUser(AbstractUser):
 class Subscribers(models.Model):
     email = models.EmailField(max_length=200)
     is_active = models.BooleanField(default=True)
-    createdTime = models.DateTimeField(auto_now_add=True, blank=True)
+    createdTime = models.DateTimeField(default=timezone.now, blank=True)
 
     def __str__(self):
         return self.email
