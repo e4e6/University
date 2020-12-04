@@ -85,10 +85,17 @@ class University(models.Model):
     priviligeList = models.ManyToManyField(Privilige, blank=True)
     campusList = models.ManyToManyField(Campus, blank=True)
 
-    def GetFaculties(self):
-        return "\n".join([p.username for p in self.facultyList.all()])
 
-    facultyList.short_description = 'faculties'
+    # Gets events for that university (primary key used)
+    def GetEvents(self):
+        return "\n".join([e.name for e in self.eventList.all()])
+
+    GetEvents.short_description = 'events'
+
+    # This is used to seriliaze events
+    def natural_key(self):
+        return (self.id, self.name)
+
 
     def __str__(self):
         return self.name

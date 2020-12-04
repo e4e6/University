@@ -247,6 +247,135 @@
                                 <div class="tab-pane fade" id="content_3" role="tabpanel">
                                     
                                 </div>
+                                <div class="tab-pane fade" id="content_4" role="tabpanel">
+                                    <section class="text-center" style="margin-bottom: 50px">
+                                        <div class="bootstrap_calendar">
+                                            <div>
+                                                <header class="text-center my-3">
+                                                    <h1 class="display-4">Akademik Takvim</h1>
+                                                </header>
+
+
+                                                <div>
+                                                    <div class="calendar shadow bg-white p-5">
+                                                        <div class="d-flex align-items-center"><i class="fa fa-calendar fa-3x mr-3"></i>
+                                                            <h2 class="month font-weight-bold mb-0 text-uppercase" id="monthAndYear"></h2>
+                                                        </div>
+                                                        <p class="font-italic text-muted mb-5">Üniversitelerin Programı</p>
+                                                        <ol class="day-names list-unstyled" id="calendar-day-names">
+                                                            <li>PAZARTESİ</li>
+                                                            <li>Salı</li>
+                                                            <li>Çarşamba</li>
+                                                            <li>Perşembe</li>
+                                                            <li>Cuma</li>
+                                                            <li>CUMARTESİ</li>
+                                                            <li>Pazar</li>
+                                                        </ol>
+                                                        <ol class="days list-unstyled" id="calendar-days">
+                                                            <!-- Calendar is filled in here -->
+                                                        </ol>
+                                                        
+                                                    <div class="form-inline">
+                                                        <button class="btn btn-outline-primary col-sm-6" id="previous" onclick="previous()">Önceki</button>
+                                                        <button class="btn btn-outline-primary col-sm-6" id="next" onclick="next()">Sonraki</button>
+                                                    </div>
+                                                    <br/>
+                                                    <form class="form-inline">
+                                                        <!-- <label class="lead mr-2 ml-2" for="month">Atla: </label> -->
+                                                        <select class="form-control col-sm-6" name="month" id="month" onchange="jump()">
+                                                            <option value=0>Ocak</option>
+                                                            <option value=1>Şubak</option>
+                                                            <option value=2>Mart</option>
+                                                            <option value=3>Nisan</option>
+                                                            <option value=4>Mayıs</option>
+                                                            <option value=5>Haziran</option>
+                                                            <option value=6>Temmuz</option>
+                                                            <option value=7>Ağustos</option>
+                                                            <option value=8>Eylül</option>
+                                                            <option value=9>Ekim</option>
+                                                            <option value=10>Kasım</option>
+                                                            <option value=11>Aralık</option>
+                                                        </select>
+                                                        <label for="year"></label><select class="form-control col-sm-6" name="year" id="year" onchange="jump()">
+                                                        <option value=1990>1990</option>
+                                                        <option value=1991>1991</option>
+                                                        <option value=1992>1992</option>
+                                                        <option value=1993>1993</option>
+                                                        <option value=1994>1994</option>
+                                                        <option value=1995>1995</option>
+                                                        <option value=1996>1996</option>
+                                                        <option value=1997>1997</option>
+                                                        <option value=1998>1998</option>
+                                                        <option value=1999>1999</option>
+                                                        <option value=2000>2000</option>
+                                                        <option value=2001>2001</option>
+                                                        <option value=2002>2002</option>
+                                                        <option value=2003>2003</option>
+                                                        <option value=2004>2004</option>
+                                                        <option value=2005>2005</option>
+                                                        <option value=2006>2006</option>
+                                                        <option value=2007>2007</option>
+                                                        <option value=2008>2008</option>
+                                                        <option value=2009>2009</option>
+                                                        <option value=2010>2010</option>
+                                                        <option value=2011>2011</option>
+                                                        <option value=2012>2012</option>
+                                                        <option value=2013>2013</option>
+                                                        <option value=2014>2014</option>
+                                                        <option value=2015>2015</option>
+                                                        <option value=2016>2016</option>
+                                                        <option value=2017>2017</option>
+                                                        <option value=2018>2018</option>
+                                                        <option value=2019>2019</option>
+                                                        <option value=2020>2020</option>
+                                                        <option value=2021>2021</option>
+                                                        <option value=2022>2022</option>
+                                                        <option value=2023>2023</option>
+                                                        <option value=2024>2024</option>
+                                                        <option value=2025>2025</option>
+                                                        <option value=2026>2026</option>
+                                                        <option value=2027>2027</option>
+                                                        <option value=2028>2028</option>
+                                                        <option value=2029>2029</option>
+                                                        <option value=2030>2030</option>
+                                                    </select></form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    {% if user.is_superuser %}
+                                        <h3>Yeni Ekle</h3>
+                                        <form style="text-align: start;" action="{% url 'calendars:createevent' university.id %}" method="POST">
+                                            {% csrf_token %}
+                                            <div class="form-group">
+                                              <label for="exampleInputEmail1">Adı</label>
+                                              <input type="text" name="eventName" class="form-control" aria-describedby="emailHelp" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <h5>Rengi</h5>
+                                                <select name="eventColor" class="custom-select custom-select-sm">
+                                                    <option value="bg-primary" class="bg-primary">primary</option>
+                                                    <option value="bg-secondary" class="bg-secondary">secondary</option>
+                                                    <option value="bg-success" class="bg-success">success</option>
+                                                    <option value="bg-danger" class="bg-danger">danger</option>
+                                                    <option value="bg-info" class="bg-info">info</option>
+                                                    <option value="bg-light" class="bg-light">light</option>
+                                                    <option value="bg-dark" class="bg-dark">dark</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Başlangıç Tarihi</label>
+                                                <input type="date" class="form-control" name="eventStartDate" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Bitiş Tarihi</label>
+                                                <input type="date" class="form-control" name="eventEndDate" required>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary" onclick="clickBtn()">Ekle</button>
+                                          </form>
+                                    {% endif %}
+                                </div>
                             </div>
 
                             <hr style="background-color: #bababa;" />   
@@ -274,6 +403,7 @@
 
 {% block Customscript %}
 
+    <!-- Managing Tabs -->
     <script>
         var last_clicked_id = "nav_1";  
         function navClick(new_clicked_id) {
@@ -295,6 +425,119 @@
 
                 last_clicked_id = new_clicked_id;
             }
+        }
+    </script>
+
+    <!-- Calender -->
+    <script>
+        today = new Date();
+        currentMonth = today.getMonth();
+        currentYear = today.getFullYear();
+        selectYear = document.getElementById("year");
+        selectMonth = document.getElementById("month");
+
+        months = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
+
+        monthAndYear = document.getElementById("monthAndYear");
+
+        showCalendar(currentMonth, currentYear);
+
+        function next() {
+            currentYear = (currentMonth === 11) ? currentYear + 1 : currentYear;
+            currentMonth = (currentMonth + 1) % 12;
+            showCalendar(currentMonth, currentYear);
+        }
+
+        function previous() {
+            currentYear = (currentMonth === 0) ? currentYear - 1 : currentYear;
+            currentMonth = (currentMonth === 0) ? 11 : currentMonth - 1;
+            showCalendar(currentMonth, currentYear);
+        }
+
+        function jump() {
+            currentYear = parseInt(selectYear.value);
+            currentMonth = parseInt(selectMonth.value);
+            showCalendar(currentMonth, currentYear);
+        }
+
+        function clickBtn() {
+            showCalendar(currentMonth, currentYear);
+        }
+
+        function showCalendar(month, year) {
+            let firstDay = (new Date(year, month)).getDay()-1; //günler pazartesiden başlıyor bizde
+            let lastDayOfPastMonth = daysInMonth(month-1, year); //lastDays
+
+            tbl = document.getElementById("calendar-days"); // body of the calendar2
+
+            // clearing all previous cells
+            tbl.innerHTML = "";
+
+            // filing data about month and in the page via DOM.
+            monthAndYear.innerHTML = months[month] + " " + year;
+            selectYear.value = year;
+            selectMonth.value = month;
+
+            // creating all cells
+            let date = 1;
+            let dateNewMonth = 1;
+            for (let i = 0; i < 6; i++) {
+
+                //creating individual cells, filing them up with data.
+                for (let j = 0; j < 7; j++) {
+                    if (i === 0 && j < firstDay) {
+                        tbl.innerHTML += "<li class='outside'><div class='date'>" + (parseInt(lastDayOfPastMonth) - (firstDay - parseInt(j) - 1)).toString() + "</div></li>";
+                    }
+                    else if (date > daysInMonth(month, year)) {
+                        if(i===5 && j===0)
+                            break;
+                        tbl.innerHTML += "<li class='outside'><div class='date'>" + dateNewMonth + "</div></li>";
+                        dateNewMonth++;
+                    }
+                    else {
+                        if (date === today.getDate() && year === today.getFullYear() && month === today.getMonth()) 
+                            tbl.innerHTML += "<li class='bg-light'><div class='date' id='date"+ date +"'>"+date+"</div></li>"
+                        else
+                            tbl.innerHTML += "<li><div class='date' id='date"+ date +"'>"+date+"</div></li>"
+                        date++;
+                    }
+                }
+            }
+            $.ajax({
+                    type: 'GET',
+                    url: "{% url 'calendars:getEvents' %}",
+                    data: {
+                        month: month+1,
+                        year: year,
+                        university : '{{university.id}}'
+                    },
+
+                    success: function (response) {
+                        let eventList = JSON.parse(response['eventList']);
+                        console.log(eventList);
+                        eventList.forEach(function(company) {
+                            let event = company['fields'];
+                            startDate = new Date(event['startDate']);
+                            endDate = new Date(event['endDate']);
+                            color = event['color'];
+                            university = event['university'][1];
+                            let eventStartDay = startDate.getDate();
+                            let eventEndDay = endDate.getDate();
+                            TheDay = document.getElementById("date" + eventStartDay);
+
+                            if(eventStartDay == eventEndDay){
+                                TheDay.innerHTML += "<div class='event " + color + "' data-toggle='tooltip' data-placement='top' title='" + university + "'>" + event.name + "</div>";
+                            }
+                            else{
+                                TheDay.innerHTML += "<div class='event span-2 " + color + "' data-toggle='tooltip' data-placement='top' title='" + university + "'>" + event.name + "</div>";
+                            }
+                        });
+                    },
+                })
+        }
+
+        function daysInMonth(iMonth, iYear) {
+            return 32 - new Date(iYear, iMonth, 32).getDate();
         }
     </script>
 

@@ -34,6 +34,8 @@ class UniversityAdmin(admin.ModelAdmin):
         ('Lists',               {'fields': ['facultyList','priviligeList','campusList']}),
     ]
     filter_horizontal = ('facultyList','priviligeList', 'campusList')
+    list_display = ('name','info','GetEvents')
+
     # inlines = [FacultyInline]
 
 

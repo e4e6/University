@@ -6,8 +6,25 @@
     visibility: hidden;
   }
   
-  .calendar {
+  .calendar, .calendarsearch{
     border-radius: 10px;
+  }
+
+  .calendarsearch{
+    height: 100%;
+    text-align: left;
+  }
+
+  .calendarsearch h5{
+    font-size: 0.8em;
+    font-weight: bold;
+  }
+  .calendarsearch option, .calendarsearch select{
+    font-size: 0.9em;
+  }
+  .calendarsearch a{
+    font-size: 0.8em;
+    color:black;
   }
 
   #calendar-days{
@@ -45,7 +62,6 @@
   
   .calendar .day-names li {
     text-transform: uppercase;
-    margin-bottom: 0.5rem;
     font-weight: bold;
   }
   
@@ -72,6 +88,10 @@
   .calendar .days li .event.span-2 {
     width: 200%;
   }
+
+  .calendar .days li .event.span-3 {
+    width: 300%;
+  }
   
   .calendar .days li .event.begin {
     border-radius: 1rem 0 0 1rem;
@@ -81,9 +101,9 @@
     border-radius: 0 1rem 1rem 0;
   }
   
-  /* .calendar .days li:nth-child(n + 29) {
+  .calendar .days li:nth-child(n + 29) {
     border-bottom: none;
-  } */
+  }
   
   .calendar .days li.outside .date {
     color: #ddd;
