@@ -127,6 +127,12 @@
 
 {% block Customscript %}
 <script>
-{% comment %} window.location.href = ('#'); {% endcomment %}
+    
+    // Script for the search functionality 
+    $("form").submit(function () {
+        var input = $("<input>").attr("name", "city").val('cityNull');
+        $(this).append(input);
+        return true;
+    });
 </script>
 {% endblock Customscript %}

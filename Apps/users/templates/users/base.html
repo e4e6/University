@@ -13,11 +13,23 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.min.css'%}">
     <link rel="stylesheet" href="{% static 'assets/fonts/simple-line-icons.min.css'%}">
+
+    <!-- Animations -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.2.0/aos.css">
+
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"> -->
+    <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.min.css'%}">
+
     <link rel="stylesheet" href="{% static 'assets/css/style.css'%}">
     <link rel="stylesheet" href="{% static 'assets/css/Bootstrap-Calendar.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/photo.min.css'%}">
     <link rel="icon" href="{% static 'assets/favicon.ico' %}" type="image/x-icon">
+
+    <!-- Leaf map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
 
     <!-- <script data-ad-client="ca-pub-3994522688041075" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
 
@@ -97,8 +109,7 @@
                     <li class="nav-item"><a class="nav-link" href="{% url 'universities:index' %}" style="color: rgb(0,0,0);" data-bs-hover-animate="swing">Üniversiteler</a></li>
                     <li class="nav-item"><a class="nav-link active" href="{% url 'calendars:index' %}" style="color: rgb(0,0,0);" data-bs-hover-animate="swing">Etkinlikler</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'apptercih:home' %}" style="color: rgb(0,0,0);" data-bs-hover-animate="swing">Puan Hesaplama</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'blogs:index' %}" style="color: rgb(0,0,0);" data-bs-hover-animate="swing">Rehber Yazıları</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'appmakales:makale_home' %}" style="color: rgb(0,0,0);" data-bs-hover-animate="swing">Makale Yazıları</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'blogs:makale_home' %}" style="color: rgb(0,0,0);" data-bs-hover-animate="swing">Rehber Yazıları</a></li>
                     <li class="nav-item"><a class="nav-link" href="#" style="color: rgb(0,0,0);" data-bs-hover-animate="swing">Akademi</a></li>
                 </ul>
                 {% if not user.is_authenticated %}
@@ -130,8 +141,6 @@
             </div>
         </div>
     </nav>
-
-
 
     <!-- Login Modal -->
     <div role="dialog" tabindex="-1" class="modal fade" id="signin">
@@ -211,11 +220,9 @@
         </div>
     </div>
 
-
     <div id="snackbar1">
         <b>{{alert_message}}</b>
     </div>
-
 
     {% block content %}{% endblock content %}
     
@@ -248,6 +255,16 @@
     <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'assets/js/bs-init.js' %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.2.0/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+    <!-- Magnific Popup core JS file -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    
+    <!-- leaf map js -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+    
     <script>
         function showAlertMessage(color) {
             var x = document.getElementById("snackbar1");

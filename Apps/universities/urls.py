@@ -9,5 +9,6 @@ urlpatterns = [
     path('createUniversity/', views.createUniversity, name='createUniversity'),
     path('submitcreateUniversity/', views.submitcreateUniversity, name='submitcreateUniversity'),
     path('searchUniversity/', views.searchUniversity, name='searchUniversity'),
-    path('search/<str:searchText>', views.searchUniversityPage, name='searchUniversityPage')
+    path('search/<str:searchText>/<str:searchCity>', views.searchUniversityPage, name='searchUniversityPage'),
+    path('editUniversity/', views.editUniversity, name='editUniversity'),
 ]

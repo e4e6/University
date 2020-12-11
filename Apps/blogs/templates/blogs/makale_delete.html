@@ -1,0 +1,8 @@
+{% extends 'blogs/base.html' %}
+{% block content_appmakales %}
+<h1>Makele Silme</h1>
+<form action="" method="post">{% csrf_token %}
+<p> "{{ makale.title }}" Makalesini silmek istediğinizden eminmisiniz?</p>
+<input type="submit" value="Confirm">
+</form>
+{% endblock content_appmakales %}

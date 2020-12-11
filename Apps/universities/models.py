@@ -57,8 +57,11 @@ class University(models.Model):
     info = models.CharField(max_length=200, default="")
     detailedInfo = models.TextField(max_length=3200, default="")
 
-    country = models.CharField(max_length=200, default="")
-    city = models.CharField(max_length=200, default="")
+    country = models.CharField(max_length=200, default="", blank=True, null=True)
+    city = models.CharField(max_length=200, default="", blank=True, null=True)
+    lat = models.CharField(max_length=50, default="41.084009", blank=True, null=True)
+    lng = models.CharField(max_length=50, default="29.050593", blank=True, null=True)
+    mapShortDesc = models.CharField(max_length=200, default="İstanbul / Türkiye", blank=True, null=True)
 
     numberOfLocalStudents = models.CharField(max_length=200, default="")
     numberOfForeignStudents = models.CharField(max_length=200, default="")

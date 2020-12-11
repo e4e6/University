@@ -1,9 +1,20 @@
 {% extends "users/base.html" %}
 {% load static %}
 
-{% block customStyle %}
-
-{% endblock customStyle %}
+{% block CustomStyle %}
+<style>
+    img.huechange { filter: hue-rotate(130deg); }
+    a.editable
+    {
+        cursor: pointer;
+    }
+    input.editablefield
+    {
+        text-align: center;
+        border: none;
+    }
+</style>
+{% endblock CustomStyle %}
 
 {% block content %}
 
@@ -51,54 +62,54 @@
                     </div>
                     <div class="row" style="margin-top: 25px;">
                         <div class="col offset-0">
-                            <div class="row">
-                                <div class="col-1 col-xl-1 offset-2 text-center d-xl-flex align-self-center my-auto justify-content-xl-center align-items-xl-center universityTabs activeTab" id="nav_1" onclick="navClick(this.id)">
+                            <div class="row" style="display: flex; justify-content: center;">
+                                <div class="col-1 col-xl-1 text-center d-xl-flex align-self-center my-auto justify-content-xl-center align-items-xl-center universityTabs activeTab" id="nav_info" onclick="navClick(this.id)">
                                     <div style="margin-top: 15px;min-height: 60px;width: 80px;position: relative;padding-top: 15px;"><i class="fa fa-university" style="height: 30px;margin-bottom: 10px;font-size: 30px;"></i>
                                         <p style="vertical-align: bottom;font-size: 12px;">BİLGİ</p>
                                     </div>
                                 </div>
-                                <div class="col-1 col-xl-1 text-center d-xl-flex align-self-center my-auto justify-content-xl-center align-items-xl-center universityTabs inactiveTab" id="nav_2" onclick="navClick(this.id)">
+                                <div class="col-1 col-xl-1 text-center d-xl-flex align-self-center my-auto justify-content-xl-center align-items-xl-center universityTabs inactiveTab" id="nav_department" onclick="navClick(this.id)">
                                     <div style="margin-top: 15px;min-height: 60px;width: 80px;position: relative;padding-top: 15px;"><i class="fa fa-graduation-cap" style="height: 30px;margin-bottom: 10px;font-size: 30px;"></i>
                                         <p style="vertical-align: bottom;font-size: 12px;">BÖLÜMLER</p>
                                     </div>
                                 </div>
-                                <div class="col-1 col-xl-1 text-center d-xl-flex align-self-center my-auto justify-content-xl-center align-items-xl-center universityTabs inactiveTab" id="nav_3" onclick="navClick(this.id)">
+                                <!-- <div class="col-1 col-xl-1 text-center d-xl-flex align-self-center my-auto justify-content-xl-center align-items-xl-center universityTabs inactiveTab" id="nav_3" onclick="navClick(this.id)">
                                     <div style="margin-top: 15px;min-height: 60px;width: 80px;position: relative;padding-top: 15px;"><i class="fa fa-address-card" style="height: 30px;margin-bottom: 10px;font-size: 30px;"></i>
                                         <p style="vertical-align: bottom;font-size: 12px;">KADRO</p>
                                     </div>
-                                </div>
-                                <div class="col-1 col-xl-1 text-center d-xl-flex align-self-center my-auto justify-content-xl-center align-items-xl-center universityTabs inactiveTab" id="nav_4" onclick="navClick(this.id)">
+                                </div> -->
+                                <div class="col-1 col-xl-1 text-center d-xl-flex align-self-center my-auto justify-content-xl-center align-items-xl-center universityTabs inactiveTab" id="nav_calendar" onclick="navClick(this.id)">
                                     <div style="margin-top: 15px;min-height: 60px;width: 80px;position: relative;padding-top: 15px;"><i class="fa fa-calendar-check-o" style="height: 30px;margin-bottom: 10px;font-size: 30px;"></i>
                                         <p style="vertical-align: bottom;font-size: 12px;">TAKVİM</p>
                                     </div>
                                 </div>
-                                <div class="col-1 col-xl-1 text-center d-xl-flex align-self-center my-auto justify-content-xl-center align-items-xl-center universityTabs inactiveTab" id="nav_5" onclick="navClick(this.id)">
+                                <div class="col-1 col-xl-1 text-center d-xl-flex align-self-center my-auto justify-content-xl-center align-items-xl-center universityTabs inactiveTab" id="nav_services" onclick="navClick(this.id)">
                                     <div style="margin-top: 15px;min-height: 60px;width: 80px;position: relative;padding-top: 15px;"><i class="fa fa-bookmark" style="height: 30px;margin-bottom: 10px;font-size: 30px;"></i>
                                         <p style="vertical-align: bottom;font-size: 12px;">HİZMETLER</p>
                                     </div>
                                 </div>
-                                <div class="col-1 col-xl-1 text-center d-xl-flex align-self-center my-auto justify-content-xl-center align-items-xl-center universityTabs inactiveTab" id="nav_6" onclick="navClick(this.id)">
+                                <!-- <div class="col-1 col-xl-1 text-center d-xl-flex align-self-center my-auto justify-content-xl-center align-items-xl-center universityTabs inactiveTab" id="nav_6" onclick="navClick(this.id)">
                                     <div style="margin-top: 15px;min-height: 60px;width: 80px;position: relative;padding-top: 15px;"><i class="fa fa-info" style="height: 30px;margin-bottom: 10px;font-size: 30px;"></i>
                                         <p style="vertical-align: bottom;font-size: 12px;">DUYURULAR</p>
                                     </div>
-                                </div>
-                                <div class="col-1 col-xl-1 text-center d-xl-flex align-self-center my-auto justify-content-xl-center align-items-xl-center universityTabs inactiveTab" id="nav_7" onclick="navClick(this.id)">
+                                </div> -->
+                                <div class="col-1 col-xl-1 text-center d-xl-flex align-self-center my-auto justify-content-xl-center align-items-xl-center universityTabs inactiveTab" id="nav_pictures" onclick="navClick(this.id)">
                                     <div style="margin-top: 15px;min-height: 60px;width: 80px;position: relative;padding-top: 15px;"><i class="fa fa-camera" style="height: 30px;margin-bottom: 10px;font-size: 30px;"></i>
                                         <p style="vertical-align: bottom;font-size: 12px;">FOTOĞRAFLAR</p>
                                     </div>
                                 </div>
-                                <div class="col-1 col-xl-1 text-center d-xl-flex align-self-center my-auto justify-content-xl-center align-items-xl-center universityTabs inactiveTab" id="nav_8" onclick="navClick(this.id)">
+                                <!-- <div class="col-1 col-xl-1 text-center d-xl-flex align-self-center my-auto justify-content-xl-center align-items-xl-center universityTabs inactiveTab" id="nav_8" onclick="navClick(this.id)">
                                     <div style="margin-top: 15px;min-height: 60px;width: 80px;position: relative;padding-top: 15px;"><i class="fa fa-american-sign-language-interpreting" style="height: 30px;margin-bottom: 10px;font-size: 30px;"></i>
                                         <p style="vertical-align: bottom;font-size: 12px;">KULÜPLER</p>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
                             <div class="tab-content" id="universityTabContent">
-                                <div class="tab-pane fade show active" id="content_1" role="tabpanel">
+                                <div class="tab-pane fade show active" id="tab_info" role="tabpanel">
                                     <div class="features-boxed">
                                         <div class="container">
                                             <div class="intro">
@@ -145,7 +156,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="content_2" role="tabpanel">
+                                <div class="tab-pane fade" id="tab_department" role="tabpanel">
                                     <div class="row" style="margin-top: 100px;">
                                         <div class="col-3">
                                           <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -244,18 +255,13 @@
                                         </div>
                                       </div>
                                 </div>
-                                <div class="tab-pane fade" id="content_3" role="tabpanel">
-                                    
-                                </div>
-                                <div class="tab-pane fade" id="content_4" role="tabpanel">
+                                <div class="tab-pane fade" id="tab_calendar" role="tabpanel">
                                     <section class="text-center" style="margin-bottom: 50px">
                                         <div class="bootstrap_calendar">
                                             <div>
                                                 <header class="text-center my-3">
                                                     <h1 class="display-4">Akademik Takvim</h1>
                                                 </header>
-
-
                                                 <div>
                                                     <div class="calendar shadow bg-white p-5">
                                                         <div class="d-flex align-items-center"><i class="fa fa-calendar fa-3x mr-3"></i>
@@ -376,6 +382,128 @@
                                           </form>
                                     {% endif %}
                                 </div>
+                                <div class="tab-pane fade" id="tab_services" role="tabpanel">
+                                    deneme
+                                </div>
+                                <div class="tab-pane fade" id="tab_pictures" role="tabpanel">
+                                    <div id="portfolio">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-lg-12 text-center">
+                                                    <h2 class="section-heading" style="margin-top: 25px; margin-bottom: 25px;">Fotoğraflar</h2>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6 col-md-4 portfolio-item">
+                                                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+                                                        <div class="portfolio-hover">
+                                                            <div class="portfolio-hover-content"><i class="fa fa-plus fa-3x"></i></div>
+                                                        </div><img class="img-fluid" src="{% static 'assets/img/portfolio/1-thumbnail.jpg'%}"></a>
+                                                    <div class="portfolio-caption">
+                                                        <h4>Üniversite Fotoğraf 1</h4>
+                                                        <p class="text-muted">Giyim</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-4 portfolio-item">
+                                                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+                                                        <div class="portfolio-hover">
+                                                            <div class="portfolio-hover-content"><i class="fa fa-plus fa-3x"></i></div>
+                                                        </div><img class="img-fluid" src="{% static 'assets/img/portfolio/2-thumbnail.jpg'%}"></a>
+                                                    <div class="portfolio-caption">
+                                                        <h4>Üniversite Fotoğraf 2</h4>
+                                                        <p class="text-muted">Tasarım</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-4 portfolio-item">
+                                                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+                                                        <div class="portfolio-hover">
+                                                            <div class="portfolio-hover-content"><i class="fa fa-plus fa-3x"></i></div>
+                                                        </div><img class="img-fluid" src="{% static 'assets/img/portfolio/3-thumbnail.jpg'%}"></a>
+                                                    <div class="portfolio-caption">
+                                                        <h4>Üniversite Fotoğraf 3</h4>
+                                                        <p class="text-muted">Külüpler</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-4 portfolio-item">
+                                                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+                                                        <div class="portfolio-hover">
+                                                            <div class="portfolio-hover-content"><i class="fa fa-plus fa-3x"></i></div>
+                                                        </div><img class="img-fluid" src="{% static 'assets/img/portfolio/4-thumbnail.jpg'%}"></a>
+                                                    <div class="portfolio-caption">
+                                                        <h4>Üniversite Fotoğraf 4</h4>
+                                                        <p class="text-muted">Öğrenciler</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-4 portfolio-item">
+                                                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+                                                        <div class="portfolio-hover">
+                                                            <div class="portfolio-hover-content"><i class="fa fa-plus fa-3x"></i></div>
+                                                        </div><img class="img-fluid" src="{% static 'assets/img/portfolio/5-thumbnail.jpg'%}"></a>
+                                                    <div class="portfolio-caption">
+                                                        <h4>Üniversite Fotoğraf 5</h4>
+                                                        <p class="text-muted">Kütüphane</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-4 portfolio-item">
+                                                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+                                                        <div class="portfolio-hover">
+                                                            <div class="portfolio-hover-content"><i class="fa fa-plus fa-3x"></i></div>
+                                                        </div><img class="img-fluid" src="{% static 'assets/img/portfolio/6-thumbnail.jpg'%}"></a>
+                                                    <div class="portfolio-caption">
+                                                        <h4>Üniversite Fotoğraf 6</h4>
+                                                        <p class="text-muted">Mezunlar</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal fade portfolio-modal text-center" role="dialog" tabindex="-1" id="portfolioModal1">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-body">
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-lg-10 mx-auto">
+                                                                <div class="modal-body">
+                                                                    <h2 class="text-uppercase">Üniversite Fotoğraf 2</h2>
+                                                                    <p class="item-intro text-muted">Mezunlar</p>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6 col-md-4">
+                                                                            <img class="img-fluid galleryItem" data-group="3" href="{% static 'assets/img/portfolio/1-full.jpg'%}" src="{% static 'assets/img/portfolio/1-thumbnail.jpg'%}">
+                                                                        </div>
+                                                                        <div class="col-sm-6 col-md-4">
+                                                                            <img class="img-fluid galleryItem" data-group="3" href="{% static 'assets/img/portfolio/2-full.jpg'%}" src="{% static 'assets/img/portfolio/2-thumbnail.jpg'%}">
+                                                                        </div>
+                                                                        <div class="col-sm-6 col-md-4">
+                                                                            <img class="img-fluid galleryItem" data-group="3" href="{% static 'assets/img/portfolio/3-full.jpg'%}" src="{% static 'assets/img/portfolio/3-thumbnail.jpg'%}">
+                                                                        </div>
+                                                                        <div class="col-sm-6 col-md-4">
+                                                                            <img class="img-fluid galleryItem" data-group="3" href="{% static 'assets/img/portfolio/4-full.jpg'%}" src="{% static 'assets/img/portfolio/4-thumbnail.jpg'%}">
+                                                                        </div>
+                                                                        <div class="col-sm-6 col-md-4">
+                                                                            <img class="img-fluid galleryItem" data-group="3" href="{% static 'assets/img/portfolio/5-full.jpg'%}" src="{% static 'assets/img/portfolio/5-thumbnail.jpg'%}">
+                                                                        </div>
+                                                                        <div class="col-sm-6 col-md-4">
+                                                                            <img class="img-fluid galleryItem" data-group="3" href="{% static 'assets/img/portfolio/6-full.jpg'%}" src="{% static 'assets/img/portfolio/6-thumbnail.jpg'%}">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae
+                                                                        cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+
+                                                                    <ul class="list-unstyled">
+                                                                        <li>Tarih: Mayıs 2021</li>
+                                                                        <li>Oluşturan: Rektör</li>
+                                                                        <li>Katagori: Külüp aktiviteleri</li>
+                                                                    </ul><button class="btn btn-primary" data-dismiss="modal" type="button"><i class="fa fa-times"></i><span>&nbsp;Detayı Kapat</span></button></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                             <hr style="background-color: #bababa;" />   
@@ -383,11 +511,13 @@
                                 <div class="container">
                                     <div class="intro">
                                         <h2 class="text-center">Konum</h2>
-                                        <p class="text-center">Boğaziçi Üniversitesi 34342 Bebek/İstanbul Türkiye</p>
+                                        <div id="mapEditable">
+                                            <p class="text-center">{{university.mapShortDesc}} <a class="editable" onclick="editMap()"><i class="fa fa-pencil"></i></a> </p>
+                                        </div>
                                     </div>
                                 </div>
-                                <!-- <iframe allowfullscreen frameborder="0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDaEw6o8OhJvRQnTF3gI_tibMejtfasOlY&amp;q=Paris%2C+France&amp;zoom=15" width="100%" height="450"></iframe></div> -->
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1063.2308963021467!2d29.047355040685744!3d41.08492281098517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1str!2str!4v1605660805137!5m2!1str!2str" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen></iframe>
+                                <div id="mapid1" style="min-height: 600px; margin-top: 25px;"></div>
+                                <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1063.2308963021467!2d29.047355040685744!3d41.08492281098517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1str!2str!4v1605660805137!5m2!1str!2str" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen></iframe> -->
                             </div>
                         </div>
                     </div>
@@ -403,9 +533,113 @@
 
 {% block Customscript %}
 
+<!-- image slide -->
+    <script>
+        var groups = {};
+        $('.galleryItem').each(function() {
+            var id = parseInt($(this).attr('data-group'), 10);
+            
+            if(!groups[id]) {
+                groups[id] = [];
+            } 
+        
+            groups[id].push( this );
+        }); 
+
+        $.each(groups, function() {
+            $(this).magnificPopup({
+                type: 'image',
+                closeOnContentClick: true,
+                closeBtnInside: false,
+                gallery: { enabled:true },
+                
+            })
+        });
+    </script>
+
+    <!-- Managing Maps -->
+    <script>
+       
+        // var littleton = L.marker([41.084009, 29.050593]).bindPopup('This is Littleton, CO.'),
+        // denver = L.marker([41.1, 29.050593]).bindPopup('This is Littleton, CO.'),
+        // aurora = L.marker([41.085, 29.080593]).bindPopup('This is Littleton, CO.'),
+        // golden = L.marker([41.084, 29.120593]).bindPopup('This is Littleton, CO.');
+
+        // var cities = L.layerGroup([littleton, denver, aurora, golden]);
+        // cities.addTo(mymap);
+
+        var mymap = L.map('mapid1', {center: ['{{university.lat}}', '{{university.lng}}'], zoom: 16 });
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZWJ1YmVraXJ1c3RhbGFyIiwiYSI6ImNraWcwaWxheTA2enIycHFqd2R5MzhzcW8ifQ.Y-_BfoWWgkGK0d9cikVmAA', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'your.mapbox.access.token'
+        }).addTo(mymap);
+
+        var marker = L.marker(['{{university.lat}}', '{{university.lng}}']).addTo(mymap);
+        // var marker = L.marker([41.084009, 29.050593]).addTo(mymap);
+        marker.bindPopup("<b>{{university.name}}</b>").openPopup();
+
+        previoustext = "<p class='text-center'>{0}<a class='editable' onclick='editMap()'><i class='fa fa-pencil'></i></a></p>";
+        text = "<input type='text' id='mapEditableField' class='form-control editablefield' placeholder='Giriniz' value='{{university.mapShortDesc}}' />"
+        function editMap() {
+            editableMap = document.getElementById("mapEditable");
+            editableMap.innerHTML = text;
+            marker._icon.classList.add("huechange");
+
+            // map click getting latlng      
+            mymap.on('click', onMapClick);
+            function onMapClick(e) {
+                marker.setLatLng(e.latlng);
+                marker.bindPopup("<b>{{university.name}}</b><p>kaydedilmedi</p>").openPopup();
+            }
+
+            inputId = document.getElementById('mapEditableField');
+            inputId.addEventListener('keyup', function onEvent(e) {
+                if (e.keyCode === 13) {
+                    newtext = previoustext.replace('{0}', inputId.value);
+                    editableMap.innerHTML = newtext;
+                    marker._icon.classList.remove("huechange");
+                    marker.bindPopup("<b>{{university.name}}</b>").openPopup();
+
+
+                    formdata = new FormData();
+                    formdata.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+                    formdata.append('lat', marker.getLatLng().lat);
+                    formdata.append('lng', marker.getLatLng().lng);
+                    formdata.append('text', inputId.value);
+                    formdata.append('id', '{{university.id}}');
+                    makeAjaxCall(formdata);
+                }
+            });
+        }
+        
+        function makeAjaxCall(formdata){
+
+            $.ajax({
+                type: 'POST',
+                url: "{% url 'universities:editUniversity' %}",
+                data        : formdata,
+                cache       : false,
+                contentType : false,
+                processData : false,
+                success: function (response) {
+                },
+                error: function (response) {
+                }
+            })
+        }
+
+
+
+    </script>
+
     <!-- Managing Tabs -->
     <script>
-        var last_clicked_id = "nav_1";  
+
+        var last_clicked_id = "nav_info";  
         function navClick(new_clicked_id) {
             if(last_clicked_id != new_clicked_id){
                 $("#" + last_clicked_id).removeClass('activeTab');
@@ -414,14 +648,12 @@
                 $("#" + new_clicked_id).addClass('activeTab');
 
                 // For making content show up accordingly
-
                 var oldid = last_clicked_id.split('_')[1];
                 var newid = new_clicked_id.split('_')[1];
-                $("#content_" + oldid).removeClass('show');
-                $("#content_" + oldid).removeClass('active');
-                $("#content_" + newid).addClass('show');
-                $("#content_" + newid).addClass('active');
-
+                $("#tab_" + oldid).removeClass('show');
+                $("#tab_" + oldid).removeClass('active');
+                $("#tab_" + newid).addClass('show');
+                $("#tab_" + newid).addClass('active');
 
                 last_clicked_id = new_clicked_id;
             }
@@ -504,36 +736,35 @@
                 }
             }
             $.ajax({
-                    type: 'GET',
-                    url: "{% url 'calendars:getEvents' %}",
-                    data: {
-                        month: month+1,
-                        year: year,
-                        university : '{{university.id}}'
-                    },
+                type: 'GET',
+                url: "{% url 'calendars:getEvents' %}",
+                data: {
+                    month: month+1,
+                    year: year,
+                    university : '{{university.id}}'
+                },
 
-                    success: function (response) {
-                        let eventList = JSON.parse(response['eventList']);
-                        console.log(eventList);
-                        eventList.forEach(function(company) {
-                            let event = company['fields'];
-                            startDate = new Date(event['startDate']);
-                            endDate = new Date(event['endDate']);
-                            color = event['color'];
-                            university = event['university'][1];
-                            let eventStartDay = startDate.getDate();
-                            let eventEndDay = endDate.getDate();
-                            TheDay = document.getElementById("date" + eventStartDay);
+                success: function (response) {
+                    let eventList = JSON.parse(response['eventList']);
+                    eventList.forEach(function(company) {
+                        let event = company['fields'];
+                        startDate = new Date(event['startDate']);
+                        endDate = new Date(event['endDate']);
+                        color = event['color'];
+                        university = event['university'][1];
+                        let eventStartDay = startDate.getDate();
+                        let eventEndDay = endDate.getDate();
+                        TheDay = document.getElementById("date" + eventStartDay);
 
-                            if(eventStartDay == eventEndDay){
-                                TheDay.innerHTML += "<div class='event " + color + "' data-toggle='tooltip' data-placement='top' title='" + university + "'>" + event.name + "</div>";
-                            }
-                            else{
-                                TheDay.innerHTML += "<div class='event span-2 " + color + "' data-toggle='tooltip' data-placement='top' title='" + university + "'>" + event.name + "</div>";
-                            }
-                        });
-                    },
-                })
+                        if(eventStartDay == eventEndDay){
+                            TheDay.innerHTML += "<div class='event " + color + "' data-toggle='tooltip' data-placement='top' title='" + university + "'>" + event.name + "</div>";
+                        }
+                        else{
+                            TheDay.innerHTML += "<div class='event span-2 " + color + "' data-toggle='tooltip' data-placement='top' title='" + university + "'>" + event.name + "</div>";
+                        }
+                    });
+                },
+            })
         }
 
         function daysInMonth(iMonth, iYear) {

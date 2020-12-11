@@ -3,30 +3,58 @@ from django.http import HttpResponseRedirect
 from .models import University, Faculty, Department
 from django.urls import reverse
 from django.http import JsonResponse
+from django.core import serializers
 import json
+from django.db.models import Q
 
 # Create your views here.
 
 def index(request):
     universities = University.objects.all()
-    return render(request, 'universities/index.html', {'universities': universities})
+    # universities = University.objects.filter(~Q(city=''))
+    universitiesForMap = serializers.serialize('json', universities)
+    return render(request, 'universities/index.html', {'universities': universities, 'universitiesForMap': universitiesForMap, 'refreshMap': True})
 
-def searchUniversityPage(request, searchText):
+def searchUniversityPage(request, searchText, searchCity):
+
     universities = University.objects.filter(name__contains=searchText)
-    print(universities)
-
-    return render(request, 'universities/index.html', {'universities': universities})
+    print(searchCity)
+    if(searchCity != 'cityNull'):
+        print('geldi')
+        universities = universities.filter(city__iexact = searchCity)
+    universitiesForMap = serializers.serialize('json', universities)
+    
+    return render(request, 'universities/index.html', {'universities': universities, 'universitiesForMap': universitiesForMap, 'refreshMap': False})
 
 def searchUniversity(request):
     if request.method == 'POST':
         searchText = request.POST['searchText']
+        searchCity = request.POST['city']
+
         if not searchText:
             return HttpResponseRedirect(reverse('universities:index'))
-        return HttpResponseRedirect(reverse('universities:searchUniversityPage', args=(searchText,)))
+        return HttpResponseRedirect(reverse('universities:searchUniversityPage', args=(searchText, searchCity,)))
 
 def detail(request, university_id):
     university = get_object_or_404(University, pk=university_id)
     return render(request, 'universities/detail.html', {'university' : university})
+
+
+def editUniversity(request):
+    if request.is_ajax and request.method == "POST":
+        university_id = request.POST['id']
+        lat = request.POST['lat']
+        lng = request.POST['lng']
+        text = request.POST['text']
+        university = get_object_or_404(University, pk=university_id)
+        university.mapShortDesc = text
+        university.lat = lat
+        university.lng = lng
+        university.save()
+
+        return JsonResponse({}, status = 200)
+    else:
+        return JsonResponse({}, status = 400)
 
 def createUniversity(request):
     if request.user.is_superuser:

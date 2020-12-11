@@ -1,0 +1,32 @@
+{% extends 'users/base.html' %}
+
+{% block CustomStyle %}
+<style>
+    .cardShadow {
+        box-shadow: 0 16px 48px #E3E7EB;
+    }
+</style>
+{% endblock CustomStyle %}
+
+
+
+{% block content %}
+
+ <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    {% if user.is_authenticated %}
+    <div class="btn-group" role="group" aria-label="loginsignupbuttons">
+        <a class="btn btn-outline-secondary" href="{% url 'blogs:makale_new' %}" role="button">Yeni Makale</a>
+        <a class="btn btn-outline-secondary" href="#" role="button">{{ user.username }}</a>
+    </div>
+    {% else %}
+    {% endif %}
+</nav> 
+
+
+{% block content_blogs %}
+{% endblock content_blogs %}
+
+{% endblock content %}
+
+{% block Customscript %}
+{% endblock Customscript %}

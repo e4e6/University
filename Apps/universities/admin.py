@@ -28,6 +28,7 @@ class FacultyAdmin(admin.ModelAdmin):
 class UniversityAdmin(admin.ModelAdmin):
     fieldsets = [
         (None,               {'fields': ['name', 'info', 'detailedInfo']}),
+        ('Location',               {'fields': ['city', 'country', 'lat', 'lng','mapShortDesc']}),
         ('Student Information',               {'fields': ['numberOfLocalStudents', 'numberOfForeignStudents', 'universityType']}),
         ('Links',               {'fields': ['website_link', 'pinterest_link', 'twitter_link', 'instagram_link', 'linkedin_link', 'facebook_link']}),
         ('Photo Paths',               {'fields': ['profile_photo', 'cover_photo']}),
@@ -35,6 +36,7 @@ class UniversityAdmin(admin.ModelAdmin):
     ]
     filter_horizontal = ('facultyList','priviligeList', 'campusList')
     list_display = ('name','info','GetEvents')
+    ordering = ('id', 'name')
 
     # inlines = [FacultyInline]
 
