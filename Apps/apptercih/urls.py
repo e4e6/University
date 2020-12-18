@@ -5,8 +5,5 @@ from . import views
 app_name = 'apptercih'
 urlpatterns = [
     path('', HomePageView.as_view(), name='home'),
-    path('tyt_hesaplama',views.tyt_hesaplama,name="tyt_hesaplama"),
-
-    
-
+    path('tyt_hesaplama/',views.tyt_hesaplama,name="tyt_hesaplama"),
 ]

@@ -1,0 +1,399 @@
+{% extends "users/base.html" %}
+{% block content %}
+{% load static %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js" charset="utf-8"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/javascript" href="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
+<script type="text/javascript" src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/path/to/jquery.tablesorter.js"></script>
+<link rel="text/javascript" href="{% static 'assets/js/jquery.tablesorter.combined.js'%}">
+
+
+
+<div class="container">
+  <div class="row" style="margin-top: 0px;height: 10px;"></div>
+  <form action="{% url 'apptercihrobotu:sonuchesapla' %}" method="POST">
+    {% csrf_token %}
+    <div class="row">
+      <div class="col" style="padding-top: 8px;"><select class="border rounded border-primary shadow-sm form-control-lg"
+          data-toggle="tooltip" data-bs-tooltip="" name="LisansTuru" title="Lisans Türü" style="margin-right: 8px;">
+          <option value="1" selected="">-----</option>
+          <option value="2">Ön Lisans</option>
+          <option value="3">Lisans</option>
+        </select>
+        <select class="border rounded border-primary shadow-sm form-control-lg" data-toggle="tooltip" data-bs-tooltip=""
+          name="PuanTuru" title="Puan Türü" style="margin-right: 8px;">
+          <option value="1" selected="">-----</option>
+          <option value="SAY" name="3">SAY</option>
+          <option value="SÖZ" name="3">SOZ</option>
+          <option value="EA" name="3">EA</option>
+          <option value="DİL" name="3">DİL</option>
+          <option value="TYT" name="2">TYT</option>
+        </select><input class="border rounded border-primary shadow-sm form-control-lg" type="number"
+          data-toggle="tooltip" data-bs-tooltip="" title="Puanınız" min="0" max="600" step="0.00001" name="PuanGirisi"
+          id="PuanGirisi" required="" style="width: 150px;" placeholder="Puanınız"></div>
+      <div class="col" style="padding-top: 8px;"><button class="btn btn-primary btn-lg" type="submit">Onayla</button>
+      </div>
+    </div>
+  </form>
+
+
+  <div class="row" style="margin-top: 0px;height: 80px;"></div>
+  <div class="row">
+    <div class="col">
+      <div class="table-responsive">
+        <!-- <table class="table" id="myTable"> -->
+        <table class="tablesorter" id="myTable">
+          <thead>
+            <tr>
+              <!-- <input type="text" id="txtSearch" placeholder="General search" class="form-control" /> -->
+              <!-- <th><input class="bg-light border rounded border-primary d-block" type="text" 
+                  placeholder="Ara" name="AraUniversite" id="AraUniversite"><strong>Üniversite</strong><br></th>
+              <th><input class="bg-light border rounded border-primary d-block" type="search" onkeyup="myFunctionOneForAll()"
+                  placeholder="Ara" name="AraBolum" id="AraBolum">Bölüm</th> -->
+              <th><input class="bg-light border rounded border-primary d-block" type="search"
+                  onkeyup="myFunctionUniversite()" placeholder="Ara" name="AraUniversite"
+                  id="AraUniversite"><strong>Üniversite</strong><br></th>
+              <th><input class="bg-light border rounded border-primary d-block" type="search"
+                  onkeyup="myFunctionBolum()" placeholder="Ara" name="AraBolum" id="AraBolum">Bölüm</th>
+              <th>En küçük puan</th>
+              <th>En büyük puan</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for object in object_list %}
+            <tr>
+              <td>{{object.UniversiteAdi}}</td>
+              <td>{{object.BolumAdi}}</td>
+              <td>{{object.EnKucukPuan}}</td>
+              <td>{{object.EnBuyukPuan}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  {% comment %} <div class="row">
+    <div class="col" style="padding-top: 10px;">
+      <nav class="d-xl-flex justify-content-xl-center align-items-xl-center">
+        <ul class="pagination">
+          <li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span
+                aria-hidden="true">«</span></a></li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item disabled"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">4</a></li>
+          <li class="page-item"><a class="page-link" href="#">5</a></li>
+          <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div> {% endcomment %}
+</div>
+<script>
+  String.prototype.turkishToLower = function () {
+    var string = this;
+    var letters = {
+      "İ": "i",
+      "I": "ı",
+      "Ş": "ş",
+      "Ğ": "ğ",
+      "Ü": "ü",
+      "Ö": "ö",
+      "Ç": "ç"
+    };
+    string = string.replace(/(([İIŞĞÜÇÖ]))/g, function (letter) {
+      return letters[letter];
+    })
+    return string.toLowerCase();
+  }
+</script>
+
+<script>
+  var $LisansTuru = $('#LisansTuru'),
+    $PuanTuru = $('#PuanTuru'),
+    $options = $PuanTuru.find('option');
+
+  $LisansTuru.on('change', function () {
+    $PuanTuru.html($options.filter('[name="' + this.value + '"]'));
+  }).trigger('change');
+</script>
+
+<script>
+  function myFunctionUniversite() {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("AraUniversite");
+    //console.log("input", input)
+    filter = input.value.turkishToLower();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+    //var $tr = $('#table tr:not(:hidden)');
+    //if visible************************************************************************
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+
+
+      td = tr[i].getElementsByTagName("td")[0];
+
+      if (td && tr[i].style.backgroundColor != "green") {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.turkishToLower().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+          
+          tr[i].style.height="initial";
+        } else {
+          tr[i].style.display = "none";
+         
+          tr[i].style.height="50px";
+        }
+      }
+    }
+  }
+</script>
+
+<script>
+  function myFunctionBolum() {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("AraBolum");
+    filter = input.value.turkishToLower();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+    // if(document.getElementById("AraBolum")=""){
+
+    //   stilleri sıfırla
+    // }
+
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[1];
+
+      if (td && tr[i].style.height !="50px") {
+
+
+
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.turkishToLower().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+          tr[i].style.backgroundColor = "initial";
+        } else {
+          tr[i].style.display = "none";
+          tr[i].style.backgroundColor = "green";
+
+        }
+      }
+    }
+  }
+</script>
+<script>
+  function myFunctionAll() {
+    // Declare variables
+    var inputU, inputB, filterU, filterB, table, tr, tdU, tdB, i, txtValueU, txtValueB;
+    inputU = document.getElementById("AraUniversite");
+    inputB = document.getElementById("AraBolum");
+    console.log("input", inputU)
+    console.log("input", inputB)
+    console.log(inputB)
+    filterU = inputU.value.turkishToLower();
+    filterB = inputB.value.turkishToLower();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+    //if visible************************************************************************
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+
+      tdU = tr[i].getElementsByTagName("td")[0];
+      if (tdU) {
+        txtValueU = tdU.textContent || tdU.innerText;
+        if (txtValueU.turkishToLower().indexOf(filterU) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+
+      tdB = tr[i].getElementsByTagName("td")[1];
+      if (tdB) {
+        txtValueB = tdB.textContent || tdB.innerText;
+        if (txtValueB.turkishToLower().indexOf(filterB) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+
+    /*  for (i = 0; i < tr.length; i++) {
+        tdB = tr[i].getElementsByTagName("td")[1];
+        if (tdB) {
+          txtValueB = tdB.textContent || tdB.innerText;
+          if (txtValueB.turkishToLower().indexOf(filterB) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      } */
+  }
+</script>
+
+<script>
+  function myFunctionOneForAll() {
+    // Declare variables
+    var inputU, filterU, table, tr, tdU, i, txtValueU, tdUB;
+    var inputB, filterB, tdB, txtValueB;
+    inputU = document.getElementById("AraUniversite");
+    inputB = document.getElementById("AraBolum");
+    //console.log("input", input)
+    filterU = inputU.value.turkishToLower();
+    filterB = inputB.value.turkishToLower();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+    //if visible************************************************************************
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+      tdU = tr[i].getElementsByTagName("td")[0];
+      tdB = tr[i].getElementsByTagName("td")[1];
+      // tdUB = tr[i].getElementsByTagName("td")[0]+tr[i].getElementsByTagName("td")[1];
+      // tdUB = tr[i].getElementsByTagName("td")[0].concat(tr[i].getElementsByTagName("td")[1]);
+      if (tdU || tdB) {
+        txtValueU = tdU.textContent || tdU.innerText;
+        txtValueB = tdB.textContent || tdB.innerText;
+
+        //txtValueB = td.textContent || tdB.innerText;
+        if (txtValueU.turkishToLower().indexOf(filterU) > -1) { //|| txtValueB.turkishToLower().indexOf(filterB) > -1
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+        if (txtValueB.turkishToLower().indexOf(filterB) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+
+      /*  tdU = tr[i].getElementsByTagName("td")[0];
+        if (tdU) {
+          txtValueU = tdU.textContent || tdU.innerText;
+          if (txtValueU.turkishToLower().indexOf(filterU) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+
+        tdB = tr[i].getElementsByTagName("td")[1];
+        if (tdB) {
+          txtValueB = tdB.textContent || tdB.innerText;
+          if (txtValueB.turkishToLower().indexOf(filterB) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        } */
+
+    }
+  }
+</script>
+
+
+<!-- <script>
+$(document).ready(function() {
+  $('#myTable').DataTable();
+
+  $('#example_filter').hide(); // Hide default search datatables where example is the ID of table
+
+  $('#txtSearch').on('keyup', function() {
+      $('#myTable')
+          .DataTable()
+          .search($('#txtSearch').val(), false, true)
+          .draw();
+  });
+});
+</script> -->
+<!-- <script>
+  $(document).ready(function () {
+    $('#myTable').DataTable();
+  });
+</script>
+
+<script>
+  //var table = $('#myTable').DataTable();
+
+  // #column3_search is a <input type="text"> element
+  function deneme() {
+    var table = $('#myTable').DataTable();
+    table.columns(1).search(this.value).draw();
+  }
+</script> -->
+<!-- <script>
+$(function() {
+
+  var $table = $('table').tablesorter({
+    theme: 'blue',
+    widgets: ["zebra", "filter"],
+    widgetOptions : {
+      // filter_anyMatch replaced! Instead use the filter_external option
+      // Set to use a jQuery selector (or jQuery object) pointing to the
+      // external filter (column specific or any match)
+      filter_external : '.search',
+      // add a default type search to the first name column
+      filter_defaultFilter: { 1 : '~{query}' },
+      // include column filters
+      filter_columnFilters: true,
+      filter_placeholder: { search : 'Search...' },
+      filter_saveFilters : true,
+      filter_reset: '.reset'
+    }
+  });
+
+  // make demo search buttons work
+  $('button[data-column]').on('click', function() {
+    var $this = $(this),
+      totalColumns = $table[0].config.columns,
+      col = $this.data('column'), // zero-based index or "all"
+      filter = [];
+
+    // text to add to filter
+    filter[ col === 'all' ? totalColumns : col ] = $this.text();
+    $table.trigger('search', [ filter ]);
+    return false;
+  });
+
+});
+</script> -->
+<!-- <script>
+$(document).ready(function() {
+  var table = $('#example').DataTable();
+
+  $("#example tfoot th").each( function ( i ) {
+      var select = $('<select><option value=""></option></select>')
+          .appendTo( $(this).empty() )
+          .on( 'change', function () {
+              table.column( i )
+                  .search( $(this).val() )
+                  .draw();
+          } );
+
+      table.column( i ).data().unique().sort().each( function ( d, j ) {
+          select.append( '<option value="'+d+'">'+d+'</option>' )
+      } );
+  } );
+} );
+</script> -->
+<!-- <script>
+function filterTable() {
+  const query = q => document.querySelectorAll(q);
+  const filters = [...query('th input')].map(e => new RegExp(e.value, 'i'));
+
+  query('tbody tr').forEach(row => row.style.display = 
+    filters.every((f, i) => f.test(row.cells[i].textContent)) ? '' : 'none');
+}
+</script> -->
+{% endblock content %}

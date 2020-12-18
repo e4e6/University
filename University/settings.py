@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'Apps.universities.apps.UniversitiesConfig',
     'Apps.blogs.apps.BlogsConfig',
     'Apps.apptercih',
+    'Apps.apptercihrobotu',
+    'csvimport.app.CSVImportConf',  # use AppConfig for django >=1.7 csvimport >=2.2
 ]
 
 MIDDLEWARE = [

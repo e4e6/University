@@ -1,0 +1,27 @@
+    {% comment %} function searchuni(){
+      formdata = new FormData();
+      formdata.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+      formdata.append('university', $('#AraUniversite').val());
+      formdata.append('bolum', $('#AraBolum').val());
+
+      $.ajax({
+        type: 'POST',
+        url: "{% url 'apptercihrobotu:searchuni' %}",
+        data        : formdata,
+        cache       : false,
+        contentType : false,
+        processData : false,
+        success: function (response) {
+          //location.reload();
+          console.log("a");
+          var c = response['onnn'];
+          console.log(c);
+
+
+        },
+        error: function (response) {
+          console.log("b");
+
+        }
+      })
+    }
